@@ -7,16 +7,16 @@
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
 	<!ENTITY plgVersion		"2.0.0">
-	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/Unraid/raw/master/&name;.plg">
+	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
 	<!ENTITY controlMD5		"10997f58551964affb1fed4a72aba1dd">
-	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/AppSupport/raw/master/&name;/&controlFILE;">
+	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"948678e7e02e62ec49bbb61ba1668ed0">
-	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/AppSupport/raw/master/&name;/&dependencyFILE;">
+	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
 	<!ENTITY dependencyMD564	"5b9f5db7d560a3b8e33a765d2681663d">
-	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/AppSupport/raw/master/&name;/&dependencyFILE64;">
+	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://downloads.sourceforge.net/project/sabnzbdplus">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
 ]>
@@ -35,7 +35,7 @@ Description
 =========================================================================
 
 This Plugin installs and controls SABnzbd for UnRaid.
-All dependencies are installed as needed and everything is controllable from the webgui
+All dependencies are installed as needed and everything is controllable from the webgui.
 
 =========================================================================
 Version History
