@@ -9,7 +9,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"10997f58551964affb1fed4a72aba1dd">
+	<!ENTITY controlMD5		"d93e3be811a7f6003088b53a30fdf9a6">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"948678e7e02e62ec49bbb61ba1668ed0">
@@ -59,9 +59,7 @@ List of files created by this plugin
 INSTALLED TO: /boot/config/plugins/&name;
 
 Sabnzbd-PhAzE.tar.gz			-> This holds the plugin files
-plgver.txt					-> A text file that holds the current plugin version that is installed
 Sabnzbd.cfg				-> The config file used by the plugin
-startcfg.sh				-> This is a script that exports environment variables on app start, created on app install
 
 INSTALLED TO: /boot/packages
 
@@ -90,7 +88,10 @@ INSTALLED TO: /etc/rc.d
 
 rc.Sabnzbd					-> This is the control file. The one that starts, stops, and installs the application
 
-All dependency files for this application are installed to: /usr/local/PhAzE-Common/Sabnzbd
+INSTALLED TO: /usr/local/PhAzE-Common/Sabnzbd
+
+startcfg.sh				-> This is a script that exports environment variables on app start, created on app install
+All dependency files 			-> These are binaries and apps that are required to run the application
 -->
 
 
@@ -266,10 +267,6 @@ fi
 sed -i 's!\r!!g' "$CFGFILE"
 echo -e "\t Plugin config file verified"
 
-# Write the current plugin version to a file
-echo -e "\t Writing plugin version file"
-echo "&plgVersion;" &gt; "/boot/config/plugins/&name;/plgver.txt"
-
 # Extract and install the plugin support files from the tar.gz file
 echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
@@ -310,7 +307,6 @@ echo -e "\t Cleaning up temp files/folders"
 rm -Rf "/tmp/&name;-inst"
 
 echo "...Install complete!"
-sleep 3
 
 rm -f "/tmp/&name;-script"
 </INLINE>
