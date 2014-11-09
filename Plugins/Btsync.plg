@@ -200,7 +200,7 @@ if [ ! -f "$CTRLFILES" ]; then
 fi
 
 # Downloads plugin dependency files if they don't exist, then verify them
-if [ ! -f "$DEPFILES" ] && [ "$DEPMD5" != "" ]; then
+if [ ! -f "$DEPFILES" ] &amp;&amp; [ "$DEPMD5" != "" ]; then
 	echo -e "\t Latest plugin dependency files downloading"
 	if [ "$HASNET" == "yes" ]; then
 		mkdir -p /boot/config/plugins/&name;
