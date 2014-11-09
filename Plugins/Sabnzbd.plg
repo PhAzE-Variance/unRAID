@@ -9,13 +9,13 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"0a9bd9b1810d596b1dbe34a52f63f44e">
+	<!ENTITY controlMD5		"e823287048e993edb92c17de5ec6e63e">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"948678e7e02e62ec49bbb61ba1668ed0">
+	<!ENTITY dependencyMD5	"e251bd5440dea56ba23bceb5ea04b9a4">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"5b9f5db7d560a3b8e33a765d2681663d">
+	<!ENTITY dependencyMD564	"e97e7a7fbfccc188338ebb3f41d92168">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://downloads.sourceforge.net/project/sabnzbdplus">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
