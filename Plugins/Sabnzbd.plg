@@ -9,7 +9,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"e823287048e993edb92c17de5ec6e63e">
+	<!ENTITY controlMD5		"70e6d41415558e101537df430463692d">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e251bd5440dea56ba23bceb5ea04b9a4">
@@ -200,7 +200,7 @@ if [ ! -f "$CTRLFILES" ]; then
 fi
 
 # Downloads plugin dependency files if they don't exist, then verify them
-if [ ! -f "$DEPFILES" ]; then
+if [ ! -f "$DEPFILES" ] && [ "$DEPMD5" != "" ]; then
 	echo -e "\t Latest plugin dependency files downloading"
 	if [ "$HASNET" == "yes" ]; then
 		mkdir -p /boot/config/plugins/&name;
@@ -272,7 +272,6 @@ echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
 	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
-	rm -f "/tmp/&name;-inst/install-A/PhAzE-version.txt"
 	cp -Ra "/tmp/&name;-inst/install-A/." /
 else
 	echo "...Install failed, no plugin control files located. Exiting"
@@ -284,9 +283,8 @@ fi
 echo -e "\t Installing plugin dependency files"
 if [ -f "$DEPFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-B"
-	mkdir -p "&commonDIR;/&name;"
+	[ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
 	tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
-	rm -f "/tmp/&name;-inst/install-B/PhAzE-version.txt"
 	installpkg --root "&commonDIR;/&name;" --terse "/tmp/&name;-inst/install-B/*"
 else
 	echo "...Install failed, no plugin dependency files located. Exiting"
@@ -297,10 +295,11 @@ fi
 # Correct any ^M (Windows carriage characters) in the important files
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; sed -i 's!\r!!g' "/etc/rc.d/rc.&name;"
 [ -d "/usr/local/emhttp/plugins/&name;/event" ] &amp;&amp; sed -i 's!\r!!g' /usr/local/emhttp/plugins/&name;/event/*
-[ -f "&commonDIR;/&name;/startcfg.sh" ] &amp;&amp; sed -i 's!\r!!g' "&commonDIR;/&name;/startcfg.sh"
 
 # Create or update the export file
+[ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
 /etc/rc.d/rc.&name; writeexport
+[ -f "&commonDIR;/&name;/startcfg.sh" ] &amp;&amp; sed -i 's!\r!!g' "&commonDIR;/&name;/startcfg.sh"
 
 # Remove the temp install folder
 echo -e "\t Cleaning up temp files/folders"
