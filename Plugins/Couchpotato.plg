@@ -9,7 +9,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"03210f457221f05aa6d3940d214130b4">
+	<!ENTITY controlMD5		"201d0bd6f8234edb3e2e6962c5d19ee7">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4c480980020834c5f059bc11f22aea5a">
@@ -283,7 +283,7 @@ if [ "$DEPMD5" != "" ]; then
 		[ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
 		installpkg --root "&commonDIR;/&name;" --terse "/tmp/&name;-inst/install-B/*"
-		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" ];
+		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" ]; then
 			mkdir -p "/usr/share/curl"
 			cp -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" "/usr/share/curl/ca-bundle.crt"
 		fi
