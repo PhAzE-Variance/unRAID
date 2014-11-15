@@ -3,13 +3,12 @@
 <!DOCTYPE PLUGIN [
 	<!ENTITY name			"Btsync">
 	<!ENTITY displayName		"BitTorrent Sync">
-	<!ENTITY category		"Downloader Application">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Btsync.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"3c2dc6274218cf49e5b0e2417e80cd95">
+	<!ENTITY controlMD5		"6238662b1b495943590a1a23929a6f12">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
@@ -25,7 +24,6 @@
 	name="&name;"
 	author="&author;"
 	version="&plgVersion;"
-	category="&category;"
 	pluginURL="&pluginURL;"
 >
 

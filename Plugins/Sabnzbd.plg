@@ -3,13 +3,12 @@
 <!DOCTYPE PLUGIN [
 	<!ENTITY name			"Sabnzbd">
 	<!ENTITY displayName		"SABnzbd">
-	<!ENTITY category		"Downloader Application">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"dede73ee90bac98c68c5b9c62c3c6f02">
+	<!ENTITY controlMD5		"9bbaec7b9bada629cf1f07645263e2e4">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e251bd5440dea56ba23bceb5ea04b9a4">
@@ -25,7 +24,6 @@
 	name="&name;"
 	author="&author;"
 	version="&plgVersion;"
-	category="&category;"
 	pluginURL="&pluginURL;"
 >
 
