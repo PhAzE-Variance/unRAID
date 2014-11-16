@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Maraschino.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"e9c71fdd862008119b9af6a872d15b72">
+	<!ENTITY controlMD5		"d170c89e0e9b9eda33aa22da98506ed0">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"2fb85d1f48102ef4005fca9636fdb4bb">
