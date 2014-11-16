@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickbeard_alt.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"c1f592e45260c16e01dca3722c1a344f">
+	<!ENTITY controlMD5		"28587584e6e7220f06c9cf02677f0ea1">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"5d716df176b1bc8d1d4bd34345550936">
@@ -253,7 +253,7 @@ fi
 [ ! `cat "$CFGFILE" | grep LOGDIR` ] &amp;&amp; echo "LOGDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CACHEDIR` ] &amp;&amp; echo "CACHEDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep USESSL` ] &amp;&amp; echo "USESSL=\"no\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8081\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8082\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep URLBASE` ] &amp;&amp; echo "URLBASE=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep FORCEUPDATE` ] &amp;&amp; echo "FORCEUPDATE=\"no\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
