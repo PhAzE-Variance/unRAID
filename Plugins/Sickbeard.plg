@@ -56,40 +56,40 @@ List of files created by this plugin
 
 INSTALLED TO: /boot/config/plugins/&name;
 
-Sickbeard-PhAzE.tar.gz		-> This holds the plugin files
-Sickbeard.cfg				-> The config file used by the plugin
+Sickbeard-PhAzE.tar.gz			-> This holds the plugin files
+Sickbeard.cfg					-> The config file used by the plugin
 
 INSTALLED TO: /boot/packages
 
-Sickbeard-PhAzE-Support.tar.gz-> This holds the plugins dependency files
+Sickbeard-PhAzE-Support.tar.gz		-> This holds the plugins dependency files
 
 INSTALLED TO: /usr/local/emhttp/plugins/webGui
 
-PhAzE.page					-> This page points to the menu under the settings tab where the plugins are installed under
-icons/Phaze.png				-> This is the icon for the PhAzE Plugins menu
+PhAzE.page						-> This page points to the menu under the settings tab where the plugins are installed under
+icons/Phaze.png					-> This is the icon for the PhAzE Plugins menu
 
 INSTALLED TO: /usr/local/emhttp/plugins/Sickbeard
 
-Sickbeard.page			-> This page points to the PHP file for the plugin GUI
-Sickbeard.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
-Sickbeard.php				-> This is the PHP page for the plugin settings GUI
-Sickbeard.png				-> This is the applications icon
-device_status.png			-> This is an icon used in the settings page
-new_config.png				-> This is an icon used in the settings page
-information.png				-> This is an icon used in the settings page
-paypal.png					-> This is an image used in the settings page
-README.md					-> This is a text file that describes the application
-event/disks_mounted			-> Starts the application when the array is mounted
-event/unmounting_disks		-> Stops the application when the array is unmounted
+Sickbeard.page					-> This page points to the PHP file for the plugin GUI
+Sickbeard.css					-> This is some added CSS to keep the look and feel of the plugins across unraid versions
+Sickbeard.php					-> This is the PHP page for the plugin settings GUI
+Sickbeard.png					-> This is the applications icon
+device_status.png				-> This is an icon used in the settings page
+new_config.png					-> This is an icon used in the settings page
+information.png					-> This is an icon used in the settings page
+paypal.png						-> This is an image used in the settings page
+README.md						-> This is a text file that describes the application
+event/disks_mounted				-> Starts the application when the array is mounted
+event/unmounting_disks			-> Stops the application when the array is unmounted
 
 INSTALLED TO: /etc/rc.d
 
-rc.Sickbeard				-> This is the control file. The one that starts, stops, and installs the application
+rc.Sickbeard					-> This is the control file. The one that starts, stops, and installs the application
 
 INSTALLED TO: /usr/local/PhAzE-Common/Sickbeard
 
-startcfg.sh				-> This is a script that exports environment variables on app start, created on app install
-All dependency files 			-> These are binaries and apps that are required to run the application
+startcfg.sh					-> This is a script that exports environment variables on app start, created on app install
+All dependency files 				-> These are binaries and apps that are required to run the application
 -->
 
 
