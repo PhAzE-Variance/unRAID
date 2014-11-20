@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Nzbmegasearch.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"eefd3cfa3cef11b305426537c1cfb762">
+	<!ENTITY controlMD5		"11f817ba7fb7edcce3bde531ec72f533">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"d17ea840c2080d77eb590e7763417f33">
@@ -32,7 +32,7 @@
 Description
 =========================================================================
 
-This Plugin installs and controls Headphones for UnRaid.
+This Plugin installs and controls NZBmegasearcH for UnRaid.
 All dependencies are installed as needed and everything is controllable from the webgui.
 
 =========================================================================
@@ -56,24 +56,24 @@ List of files created by this plugin
 
 INSTALLED TO: /boot/config/plugins/&name;
 
-Headphones-PhAzE.tar.gz			-> This holds the plugin files
-Headphones.cfg					-> The config file used by the plugin
+Nzbmegasearch-PhAzE.tar.gz			-> This holds the plugin files
+Nzbmegasearch.cfg					-> The config file used by the plugin
 
 INSTALLED TO: /boot/packages
 
-Headphones-PhAzE-Support.tar.gz		-> This holds the plugins dependency files
+Nzbmegasearch-PhAzE-Support.tar.gz		-> This holds the plugins dependency files
 
 INSTALLED TO: /usr/local/emhttp/plugins/webGui
 
 PhAzE.page						-> This page points to the menu under the settings tab where the plugins are installed under
 icons/Phaze.png					-> This is the icon for the PhAzE Plugins menu
 
-INSTALLED TO: /usr/local/emhttp/plugins/Headphones
+INSTALLED TO: /usr/local/emhttp/plugins/Nzbmegasearch
 
-Headphones.page					-> This page points to the PHP file for the plugin GUI
-Headphones.css					-> This is some added CSS to keep the look and feel of the plugins across unraid versions
-Headphones.php					-> This is the PHP page for the plugin settings GUI
-Headphones.png					-> This is the applications icon
+Nzbmegasearch.page					-> This page points to the PHP file for the plugin GUI
+Nzbmegasearch.css					-> This is some added CSS to keep the look and feel of the plugins across unraid versions
+Nzbmegasearch.php					-> This is the PHP page for the plugin settings GUI
+Nzbmegasearch.png					-> This is the applications icon
 device_status.png				-> This is an icon used in the settings page
 new_config.png					-> This is an icon used in the settings page
 information.png					-> This is an icon used in the settings page
@@ -84,9 +84,9 @@ event/unmounting_disks			-> Stops the application when the array is unmounted
 
 INSTALLED TO: /etc/rc.d
 
-rc.Headphones					-> This is the control file. The one that starts, stops, and installs the application
+rc.Nzbmegasearch					-> This is the control file. The one that starts, stops, and installs the application
 
-INSTALLED TO: /usr/local/PhAzE-Common/Headphones
+INSTALLED TO: /usr/local/PhAzE-Common/Nzbmegasearch
 
 startcfg.sh					-> This is a script that exports environment variables on app start, created on app install
 All dependency files 				-> These are binaries and apps that are required to run the application
@@ -120,8 +120,8 @@ echo " " # This makes unraid 5 console a little cleaner
 echo "Cleaning up previous install files..."
 
 # Backwards compatibility from older PhAzE plugins, they had lower case folders
-if [ -d "/boot/config/plugins/headphones" ]; then
-	mv -f "/boot/config/plugins/headphones" "/boot/config/plugins/&name;-temp"
+if [ -d "/boot/config/plugins/nzbmegasearch" ]; then
+	mv -f "/boot/config/plugins/nzbmegasearch" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
 fi
 
