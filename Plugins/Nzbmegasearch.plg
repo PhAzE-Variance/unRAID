@@ -57,11 +57,11 @@ List of files created by this plugin
 INSTALLED TO: /boot/config/plugins/&name;
 
 Nzbmegasearch-PhAzE.tar.gz			-> This holds the plugin files
-Nzbmegasearch.cfg					-> The config file used by the plugin
+Nzbmegasearch.cfg				-> The config file used by the plugin
 
 INSTALLED TO: /boot/packages
 
-Nzbmegasearch-PhAzE-Support.tar.gz		-> This holds the plugins dependency files
+Nzbmegasearch-PhAzE-Support.tar.gz	-> This holds the plugins dependency files
 
 INSTALLED TO: /usr/local/emhttp/plugins/webGui
 
@@ -70,10 +70,10 @@ icons/Phaze.png					-> This is the icon for the PhAzE Plugins menu
 
 INSTALLED TO: /usr/local/emhttp/plugins/Nzbmegasearch
 
-Nzbmegasearch.page					-> This page points to the PHP file for the plugin GUI
-Nzbmegasearch.css					-> This is some added CSS to keep the look and feel of the plugins across unraid versions
-Nzbmegasearch.php					-> This is the PHP page for the plugin settings GUI
-Nzbmegasearch.png					-> This is the applications icon
+Nzbmegasearch.page				-> This page points to the PHP file for the plugin GUI
+Nzbmegasearch.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
+Nzbmegasearch.php				-> This is the PHP page for the plugin settings GUI
+Nzbmegasearch.png				-> This is the applications icon
 device_status.png				-> This is an icon used in the settings page
 new_config.png					-> This is an icon used in the settings page
 information.png					-> This is an icon used in the settings page
@@ -84,7 +84,7 @@ event/unmounting_disks			-> Stops the application when the array is unmounted
 
 INSTALLED TO: /etc/rc.d
 
-rc.Nzbmegasearch					-> This is the control file. The one that starts, stops, and installs the application
+rc.Nzbmegasearch				-> This is the control file. The one that starts, stops, and installs the application
 
 INSTALLED TO: /usr/local/PhAzE-Common/Nzbmegasearch
 
