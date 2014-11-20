@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Maraschino.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"d170c89e0e9b9eda33aa22da98506ed0">
+	<!ENTITY controlMD5		"e9f43693d2b656f0baf71bbbfeac61e5">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"2fb85d1f48102ef4005fca9636fdb4bb">
@@ -266,7 +266,7 @@ echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
 	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
-	cp -Ra "/tmp/&name;-inst/install-A/." /
+	cp -Raf "/tmp/&name;-inst/install-A/." /
 else
 	echo "...Install failed, no plugin control files located. Exiting"
 	rm -f "/tmp/&name;-script"

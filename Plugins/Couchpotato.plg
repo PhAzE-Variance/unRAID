@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"b16e093598fb6927366af29a33fbc995">
+	<!ENTITY controlMD5		"5b087479be940dbe07649060c807e147">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4c480980020834c5f059bc11f22aea5a">
@@ -266,7 +266,7 @@ echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
 	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
-	cp -Ra "/tmp/&name;-inst/install-A/." /
+	cp -Raf "/tmp/&name;-inst/install-A/." /
 else
 	echo "...Install failed, no plugin control files located. Exiting"
 	rm -f "/tmp/&name;-script"

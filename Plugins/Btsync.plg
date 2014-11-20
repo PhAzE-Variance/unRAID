@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Btsync.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"4a292675086999a8471925ec3687f478">
+	<!ENTITY controlMD5		"ac301dfab5b914d05a078f4470f87cf5">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
@@ -267,7 +267,7 @@ echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
 	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
-	cp -Ra "/tmp/&name;-inst/install-A/." /
+	cp -Raf "/tmp/&name;-inst/install-A/." /
 else
 	echo "...Install failed, no plugin control files located. Exiting"
 	rm -f "/tmp/&name;-script"
