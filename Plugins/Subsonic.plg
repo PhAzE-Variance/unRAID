@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Subsonic.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"e18ec90b6da624ed99c39eb2cea446b1">
+	<!ENTITY controlMD5		"c8d68b293e84ed02c3e31302ac5b9367">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e5a5855aa6c9cd689991cbf9a351b046">
@@ -261,8 +261,8 @@ fi
 [ ! `cat "$CFGFILE" | grep URLBASE` ] &amp;&amp; echo "URLBASE=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep BETA` ] &amp;&amp; echo "BETA=\"no\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; echo "REPO=\"&appURL1;\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; echo "REPO=\"&appURL2;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; echo "REPO1=\"&appURL1;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; echo "REPO2=\"&appURL2;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CHECKONLINE` ] &amp;&amp; echo "CHECKONLINE=\"yes\"" &gt;&gt; "$CFGFILE"
