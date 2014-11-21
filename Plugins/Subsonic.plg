@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Subsonic.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"c8d68b293e84ed02c3e31302ac5b9367">
+	<!ENTITY controlMD5		"3ba35ad510c4444aa3de3c9040045d93">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e5a5855aa6c9cd689991cbf9a351b046">
