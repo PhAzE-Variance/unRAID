@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Mylar.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"3f523e09ed0fe21a5f1d62b8c4c34fb7">
+	<!ENTITY controlMD5		"bf7caad4963af284aa287d72ed2ba9fb">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"3d9b4d0903184e10a8665fb95aa6fc00">
@@ -281,7 +281,7 @@ if [ "$DEPMD5" != "" ]; then
 	echo -e "\t Installing plugin dependency files"
 	if [ -f "$DEPFILES" ]; then
 		mkdir -p "/tmp/&name;-inst/install-B"
-		[ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
+		[ ! -d "&commonDIR;/&name;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/&name;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
 		ROOT="&commonDIR;/&name;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
 		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" ]; then

@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickbeard_alt.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"d927e33974397f3aabd586493de280a1">
+	<!ENTITY controlMD5		"33ed62d46460f439758b5a344fc1adb8">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"5d716df176b1bc8d1d4bd34345550936">
@@ -282,7 +282,7 @@ if [ "$DEPMD5" != "" ]; then
 	echo -e "\t Installing plugin dependency files"
 	if [ -f "$DEPFILES" ]; then
 		mkdir -p "/tmp/&name;-inst/install-B"
-		[ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
+		[ ! -d "&commonDIR;/&name;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/&name;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
 		ROOT="&commonDIR;/&name;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
 		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" ]; then
