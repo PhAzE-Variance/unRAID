@@ -116,16 +116,16 @@ if [ "x86_64" == "$ARCHTYPE" ]; then
 	DEPFILES="/boot/packages/&dependencyFILE64;"
 	DEPMD5="&dependencyMD564;"
 	DEPURL="&dependencyURL64;"
-	MONOF="/boot/packages/&monoFILE64;"
-	MONOM="&monoMD564;"
-	MONOU="&monoURL64;"
+	MONOFILE="/boot/packages/&monoFILE64;"
+	MONOMD5="&monoMD564;"
+	MONOURL="&monoURL64;"
 else
 	DEPFILES="/boot/packages/&dependencyFILE;"
 	DEPMD5="&dependencyMD5;"
 	DEPURL="&dependencyURL;"
-	MONOF="/boot/packages/&monoFILE;"
-	MONOM="&monoMD5;"
-	MONOU="&monoURL;"
+	MONOFILE="/boot/packages/&monoFILE;"
+	MONOMD5="&monoMD5;"
+	MONOURL="&monoURL;"
 fi
 
 echo " " # This makes unraid 5 console a little cleaner
@@ -160,11 +160,11 @@ if [ -f "$DEPFILES" ]; then
 fi
 
 # Verifies Mono dependency file if it exist, deletes if it is incorrect so new ones can be downloaded
-if [ -f "$MONOF" ]; then
-	MD5TEST=`echo "$MONOM  $MONOF" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
+if [ -f "$MONOFILE" ]; then
+	MD5TEST=`echo "$MONOMD5  $MONOFILE" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
 	if [ "$MD5TEST" == "0" ]; then
 		echo -e "\t Found wrong version of Mono dependency file. Deleting"
-		rm -f "$MONOF"
+		rm -f "$MONOFILE"
 	else
 		echo -e "\t Found correct version of Mono dependency file. Ignoring"
 	fi
@@ -249,18 +249,18 @@ if [ ! -f "$DEPFILES" ] &amp;&amp; [ "$DEPMD5" != "" ]; then
 fi
 
 # Downloads Mono dependency file if it doesn't exist, then verify it
-if [ ! -f "$MONOF" ] &amp;&amp; [ "$MONOM" != "" ]; then
+if [ ! -f "$MONOFILE" ] &amp;&amp; [ "$MONOMD5" != "" ]; then
 	echo -e "\t Latest Mono dependency file downloading"
 	if [ "$HASNET" == "yes" ]; then
 		mkdir -p /boot/config/plugins/&name;
-		wget --no-check-certificate -qO "$MONOF" "$MONOU"
-		if [ -f "$MONOF" ]; then
-			MD5TEST2=`echo "$MONOM  $MONOF" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
+		wget --no-check-certificate -qO "$MONOFILE" "$MONOURL"
+		if [ -f "$MONOFILE" ]; then
+			MD5TEST2=`echo "$MONOMD5  $MONOFILE" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
 			if [ "$MD5TEST2" == "1" ]; then
 				echo -e "\t Mono dependency file has passed MD5 check"
 			else
 				echo "...Downloaded Mono dependency file has failed MD5 check. Deleting and aborting install"
-				rm -f "$MONOF"
+				rm -f "$MONOFILE"
 				rm -f "/tmp/&name;-script"
 				exit 1
 			fi
@@ -348,10 +348,10 @@ if [ "$DEPMD5" != "" ]; then
 fi
 
 # Install the Mono dependency file from the txz file
-if [ "$MONOM" != "" ]; then
+if [ "$MONOMD5" != "" ]; then
 	echo -e "\t Installing Mono dependency file"
-	if [ -f "$MONOM" ]; then
-		upgradepkg --install-new "$MONOF"
+	if [ -f "$MONOFILE" ]; then
+		upgradepkg --install-new "$MONOFILE"
 	else
 		echo "...Install failed, no Mono dependency file located. Exiting"
 		rm -f "/tmp/&name;-script"
