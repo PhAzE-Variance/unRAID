@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sonarr.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"38533fe35e30d282e4306104713613b2">
+	<!ENTITY controlMD5		"81c965885920b561f7e2fc1e3d167ef8">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"a7a5e4e267f1fe1c0c77a347e909285a">
