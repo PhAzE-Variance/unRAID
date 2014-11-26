@@ -1,0 +1,353 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+	<!ENTITY name			"Sonarr">
+	<!ENTITY displayName		"Sonarr">
+	<!ENTITY author			"PhAzE">
+	<!ENTITY authorName		"Troy Wagner">
+	<!ENTITY plgVersion		"2.0.0">
+	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sonarr.plg">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
+	<!ENTITY controlMD5		"38533fe35e30d282e4306104713613b2">
+	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
+	<!ENTITY dependencyMD5	"a7a5e4e267f1fe1c0c77a347e909285a">
+	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
+	<!ENTITY dependencyMD564	"5bc3f2339535bdb80ea43189c0fca0fa">
+	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
+	<!ENTITY appURL			"http://update.nzbdrone.com/v2">
+	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
+]>
+
+<PLUGIN
+	name="&name;"
+	author="&author;"
+	version="&plgVersion;"
+	pluginURL="&pluginURL;"
+>
+
+<!--
+=========================================================================
+Description
+=========================================================================
+
+This Plugin installs and controls Sonarr for UnRaid.
+All dependencies are installed as needed and everything is controllable from the webgui.
+
+=========================================================================
+Version History
+=========================================================================
+
+2.0.0		- Re-writen from scratch to run with Unraid 6 Plugin Manager
+		- Universal based plugin now downloads appropriate depedencies based on the OS architeture used
+		- Installs from USB copy if no internet connection is found and files exist on USB
+		- Added GUI setting to disable online checks by the plugin on page load
+		- Added dependency section to view main dependency versions and very they are working
+		- Added ability to uninstall the plugin and files from within the plugin GUI
+		- Dependencies now install to a common folder and app starts with a wrapper script
+		- Wrapper script adds environment variables for the common dependency folder upon start
+		- When plugin is uninstalled from PLGMGR or plugin GUI all files even dependencies are removed
+		- Plugin uninstall leaves installdir and configdir, up to user to delete those if they are not needed
+
+=========================================================================
+List of files created by this plugin
+=========================================================================
+
+INSTALLED TO: /boot/config/plugins/&name;
+
+Sonarr-PhAzE.tar.gz				-> This holds the plugin files
+Sonarr.cfg						-> The config file used by the plugin
+
+INSTALLED TO: /boot/packages
+
+Sonarr-PhAzE-Support.tar.gz		-> This holds the plugins dependency files
+
+INSTALLED TO: /usr/local/emhttp/plugins/webGui
+
+PhAzE.page						-> This page points to the menu under the settings tab where the plugins are installed under
+icons/Phaze.png					-> This is the icon for the PhAzE Plugins menu
+
+INSTALLED TO: /usr/local/emhttp/plugins/Sonarr
+
+Sonarr.page					-> This page points to the PHP file for the plugin GUI
+Sonarr.css						-> This is some added CSS to keep the look and feel of the plugins across unraid versions
+Sonarr.php						-> This is the PHP page for the plugin settings GUI
+Sonarr.png						-> This is the applications icon
+device_status.png				-> This is an icon used in the settings page
+new_config.png					-> This is an icon used in the settings page
+information.png					-> This is an icon used in the settings page
+paypal.png						-> This is an image used in the settings page
+README.md						-> This is a text file that describes the application
+event/disks_mounted				-> Starts the application when the array is mounted
+event/unmounting_disks			-> Stops the application when the array is unmounted
+
+INSTALLED TO: /etc/rc.d
+
+rc.Sonarr						-> This is the control file. The one that starts, stops, and installs the application
+
+INSTALLED TO: /usr/local/PhAzE-Common/Sonarr
+
+startcfg.sh					-> This is a script that exports environment variables on app start, created on app install
+All dependency files 				-> These are binaries and apps that are required to run the application
+-->
+
+
+
+<FILE Name="/tmp/&name;-script" Run="/bin/bash">
+<INLINE>
+# =========================================================================
+# Clean up previous files that don't match the known md5
+# =========================================================================
+
+# Setup plugin variables
+CTRLFILES="/boot/config/plugins/&name;/&controlFILE;"
+CFGFILE="/boot/config/plugins/&name;/&name;.cfg"
+
+# Since this is a universal plugin for unraid, check if running 32 bit or 64 bit OS for dependencies
+ARCHTYPE=$( /usr/bin/uname -m )
+if [ "x86_64" == "$ARCHTYPE" ]; then
+	DEPFILES="/boot/packages/&dependencyFILE64;"
+	DEPMD5="&dependencyMD564;"
+	DEPURL="&dependencyURL64;"
+else
+	DEPFILES="/boot/packages/&dependencyFILE;"
+	DEPMD5="&dependencyMD5;"
+	DEPURL="&dependencyURL;"
+fi
+
+echo " " # This makes unraid 5 console a little cleaner
+echo "Cleaning up previous install files..."
+
+# Backwards compatibility from older PhAzE plugins, they had lower case folders
+if [ -d "/boot/config/plugins/nzbdrone" ]; then
+	mv -f "/boot/config/plugins/nzbdrone" "/boot/config/plugins/&name;-temp"
+	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+fi
+
+# Verifies plugin control files if they exist, deletes if they are incorrect so new ones can be downloaded
+if [ -f "$CTRLFILES" ]; then
+	MD5TEST=`echo "&controlMD5;  $CTRLFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
+	if [ "$MD5TEST" == "0" ]; then
+		echo -e "\t Found wrong version of plugin control files. Deleting"
+		rm -f "$CTRLFILES"
+	else
+		echo -e "\t Found correct version of plugin control files. Ignoring"
+	fi
+fi
+
+# Verifies plugin dependency files if they exist, deletes if they are incorrect so new ones can be downloaded
+if [ -f "$DEPFILES" ]; then
+	MD5TEST=`echo "$DEPMD5  $DEPFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
+	if [ "$MD5TEST" == "0" ]; then
+		echo -e "\t Found wrong version of plugin dependency files. Deleting"
+		rm -f "$DEPFILES"
+	else
+		echo -e "\t Found correct version of plugin dependency files. Ignoring"
+	fi
+fi
+
+# Remove previous temp install directory if found
+[ -d /tmp/&name;-inst ] &amp;&amp; rm -fR /tmp/&name;-inst;
+
+# This makes the packages directory since latest unraid version doesn't have one made by default anymore
+[ ! -d "/boot/packages" ] &amp;&amp; mkdir -p "/boot/packages"
+
+echo "...Cleanup complete!"
+
+# =========================================================================
+# Download required plugin files
+# =========================================================================
+
+echo "Downloading any missing plugin files..."
+
+# Check for net connectivity to the repo, 5 second timeout then fails
+NETCHECK=`timeout 5 wget --no-check-certificate -qST4 --spider "https://github.com/PhAzE-Variance" 2>&amp;1 | grep HTTP | tail -1 | cut -f1 | awk '{print $NF}'`
+if [ "$NETCHECK" == "OK" ]; then
+	HASNET="yes"
+else
+	HASNET="no"
+fi
+
+# Downloads plugin control files if they don't exist, then verify them
+if [ ! -f "$CTRLFILES" ]; then
+	echo -e "\t Latest plugin control files downloading"
+	if [ "$HASNET" == "yes" ]; then
+		mkdir -p "/boot/config/plugins/&name;"
+		wget --no-check-certificate -qO "$CTRLFILES" "&controlURL;"
+		if [ -f "$CTRLFILES" ]; then
+			MD5TEST1=`echo "&controlMD5;  $CTRLFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
+			if [ "$MD5TEST1" == "1" ]; then
+				echo -e "\t Plugin control files have passed MD5 check"
+			else
+				echo "...Downloaded plugin control files have failed MD5 check. Deleting and aborting install"
+				rm -f "$CTRLFILES"
+				rm -f "/tmp/&name;-script"
+				exit 1
+			fi
+		else
+			echo "...Unable to download missing plugin control files. Aborting install"
+			rm -f "/tmp/&name;-script"
+			exit 1
+		fi
+	else
+		echo "...Unable to download missing plugin control files. Aborting install"
+		rm -f "/tmp/&name;-script"
+		exit 1
+	fi
+fi
+
+# Downloads plugin dependency files if they don't exist, then verify them
+if [ ! -f "$DEPFILES" ] &amp;&amp; [ "$DEPMD5" != "" ]; then
+	echo -e "\t Latest plugin dependency files downloading"
+	if [ "$HASNET" == "yes" ]; then
+		mkdir -p /boot/config/plugins/&name;
+		wget --no-check-certificate -qO "$DEPFILES" "$DEPURL"
+		if [ -f "$DEPFILES" ]; then
+			MD5TEST2=`echo "$DEPMD5  $DEPFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
+			if [ "$MD5TEST2" == "1" ]; then
+				echo -e "\t Plugin dependency files have passed MD5 check"
+			else
+				echo "...Downloaded plugin dependency files have failed MD5 check. Deleting and aborting install"
+				rm -f "$DEPFILES"
+				rm -f "/tmp/&name;-script"
+				exit 1
+			fi
+		else
+			echo "...Unable to download missing plugin dependency files. Aborting install"
+			rm -f "/tmp/&name;-script"
+			exit 1
+		fi
+	else
+		echo "...Unable to download missing plugin dependency files. Aborting install"
+		rm -f "/tmp/&name;-script"
+		exit 1
+	fi
+fi
+
+# Removes other packages that don't match the version required, leaves out the proper ones if they exist
+find /boot/config/plugins/&name;/&name;-PhAzE-Control* -type f -not -name "&controlFILE;" 2> /dev/null | xargs rm 2> /dev/null
+if [ "x86_64" == "$ARCHTYPE" ]; then
+	find /boot/packages/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE64;" 2> /dev/null | xargs rm 2> /dev/null
+else
+	find /boot/packages/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE;" 2> /dev/null | xargs rm 2> /dev/null
+fi
+
+echo "...Downloading complete!"
+
+# ==============================================
+# The 'install' script
+# ==============================================
+
+echo "Running install script for &displayName;..."
+
+# Verify the elements in the plugin default config file, add any that are missing
+if [ ! -f "$CFGFILE" ]; then
+	mkdir -p "/boot/config/plugins/&name;"
+	echo -e "\t No default config file found. Creating"
+	echo "# &displayName; configuration:" &gt; "$CFGFILE"
+fi
+[ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/config\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep USESSL` ] &amp;&amp; echo "USESSL=\"no\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8989\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep SSLPORT` ] &amp;&amp; echo "SSLPORT=\"9898\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep URLBASE` ] &amp;&amp; echo "URLBASE=\"\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep BRANCH` ] &amp;&amp; echo "BRANCH=\"master\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep REPO` ] &amp;&amp; echo "REPO=\"&appURL;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep CHECKONLINE` ] &amp;&amp; echo "CHECKONLINE=\"yes\"" &gt;&gt; "$CFGFILE"
+sed -i 's!\r!!g' "$CFGFILE"
+echo -e "\t Plugin config file verified"
+
+# Extract and install the plugin support files from the tar.gz file
+echo -e "\t Installing plugin control files"
+if [ -f "$CTRLFILES" ]; then
+	mkdir -p "/tmp/&name;-inst/install-A"
+	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+	cp -Raf "/tmp/&name;-inst/install-A/." /
+else
+	echo "...Install failed, no plugin control files located. Exiting"
+	rm -f "/tmp/&name;-script"
+	exit 1
+fi
+
+# Extract and install the plugin dependency files from the tar.gz file
+if [ "$DEPMD5" != "" ]; then
+	echo -e "\t Installing plugin dependency files"
+	if [ -f "$DEPFILES" ]; then
+		mkdir -p "/tmp/&name;-inst/install-B"
+		[ ! -d "&commonDIR;/&name;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/&name;/var/log/setup/tmp"
+		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
+		ROOT="&commonDIR;/&name;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
+		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" ]; then
+			mkdir -p "/usr/share/curl"
+			cp -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" "/usr/share/curl/ca-bundle.crt"
+		fi
+	else
+		echo "...Install failed, no plugin dependency files located. Exiting"
+		rm -f "/tmp/&name;-script"
+		exit 1
+	fi
+fi
+
+# Correct any ^M (Windows carriage characters) in the important files
+[ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; sed -i 's!\r!!g' "/etc/rc.d/rc.&name;"
+[ -d "/usr/local/emhttp/plugins/&name;/event" ] &amp;&amp; sed -i 's!\r!!g' /usr/local/emhttp/plugins/&name;/event/*
+
+# Create or update the export file
+[ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
+/etc/rc.d/rc.&name; writeexport
+[ -f "&commonDIR;/&name;/startcfg.sh" ] &amp;&amp; sed -i 's!\r!!g' "&commonDIR;/&name;/startcfg.sh"
+
+# Remove the temp install folder
+echo -e "\t Cleaning up temp files/folders"
+rm -Rf "/tmp/&name;-inst"
+
+echo "...Install complete!"
+
+rm -f "/tmp/&name;-script"
+</INLINE>
+</FILE>
+
+
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+# ==============================================
+# The 'remove' script
+# ==============================================
+
+echo "Uninstalling $displayName; plugin..."
+sleep 1
+
+# Stop the app if the control file exists
+if [ -f "/etc/rc.d/rc.&name;" ]; then
+	/etc/rc.d/rc.&name; stop
+fi
+sleep 1
+
+# Remove all files and directories pertaining to this plugin
+[ -d "&commonDIR;/&name;" ] &amp;&amp; rm -fR "&commonDIR;/&name;"
+if [ "$(ls -A &commonDIR; 2> /dev/null)" == "" ]; then
+	rm -Rf "&commonDIR;"
+	rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
+	rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
+fi
+find /boot/packages/&name;-PhAzE-* -type f | xargs rm 2> /dev/null
+[ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
+[ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"
+[ -e "/var/log/plugins/&name;.plg" ] &amp;&amp; rm -f "/var/log/plugins/&name;.plg"
+[ -d "/boot/config/plugins/&name;" ] &amp;&amp; rm -fR "/boot/config/plugins/&name;"
+[ -f "/boot/config/plugins/&name;.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg.old"
+[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
+
+echo "...Uninstall complete!"
+sleep 3
+</INLINE>
+</FILE>
+
+</PLUGIN>
