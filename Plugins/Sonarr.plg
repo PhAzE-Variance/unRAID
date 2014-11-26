@@ -116,16 +116,16 @@ if [ "x86_64" == "$ARCHTYPE" ]; then
 	DEPFILES="/boot/packages/&dependencyFILE64;"
 	DEPMD5="&dependencyMD564;"
 	DEPURL="&dependencyURL64;"
-	MONOF="/boot/packages/&dependencyFILE64;"
-	MONOM="&dependencyMD564;"
-	MONOU="&dependencyURL64;"
+	MONOF="/boot/packages/&monoFILE64;"
+	MONOM="&monoMD564;"
+	MONOU="&monoURL64;"
 else
 	DEPFILES="/boot/packages/&dependencyFILE;"
 	DEPMD5="&dependencyMD5;"
 	DEPURL="&dependencyURL;"
-	MONOF="/boot/packages/&dependencyFILE;"
-	MONOM="&dependencyMD5;"
-	MONOU="&dependencyURL;"
+	MONOF="/boot/packages/&monoFILE;"
+	MONOM="&monoMD5;"
+	MONOU="&monoURL;"
 fi
 
 echo " " # This makes unraid 5 console a little cleaner
