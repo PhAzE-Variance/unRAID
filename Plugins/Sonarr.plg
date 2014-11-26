@@ -249,7 +249,7 @@ if [ ! -f "$CFGFILE" ]; then
 fi
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/config\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/AppData\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep USESSL` ] &amp;&amp; echo "USESSL=\"no\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8989\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep SSLPORT` ] &amp;&amp; echo "SSLPORT=\"9898\"" &gt;&gt; "$CFGFILE"
