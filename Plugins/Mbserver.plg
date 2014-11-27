@@ -302,7 +302,7 @@ if [ ! -f "$CFGFILE" ]; then
 fi
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/AppData\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/ProgramData-Server\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep IMGDIR` ] &amp;&amp; echo "IMGDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CACHEDIR` ] &amp;&amp; echo "CACHEDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep METADIR` ] &amp;&amp; echo "METADIR=\"\"" &gt;&gt; "$CFGFILE"
