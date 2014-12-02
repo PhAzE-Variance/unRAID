@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Subsonic.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"52c4578a596c49cb90259a58f93356ce">
+	<!ENTITY controlMD5		"e87482be7a4fd633b3951e9e414e5940">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e5a5855aa6c9cd689991cbf9a351b046">
@@ -16,8 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
 	<!ENTITY dependencyMD564	"d1a9f901e91e9ebda32eaebdc8a32973">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL1		"http://www.subsonic.org/pages/download.jsp">
-	<!ENTITY appURL2		"http://sourceforge.net/projects/subsonic">
+	<!ENTITY appURL			"http://sourceforge.net/projects/subsonic">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
 ]>
 
@@ -261,8 +260,7 @@ fi
 [ ! `cat "$CFGFILE" | grep URLBASE` ] &amp;&amp; echo "URLBASE=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep BETA` ] &amp;&amp; echo "BETA=\"no\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; echo "REPO1=\"&appURL1;\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; echo "REPO2=\"&appURL2;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep REPO` ] &amp;&amp; echo "REPO=\"&appURL;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CHECKONLINE` ] &amp;&amp; echo "CHECKONLINE=\"yes\"" &gt;&gt; "$CFGFILE"
