@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Btsync.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"aaf2c49d06044e08ed42a229ea8bf20c">
+	<!ENTITY controlMD5		"43d4f32ca6a844ca58bf15560a1f3c4b">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
@@ -256,17 +256,20 @@ fi
 sed -i 's!\r!!g' "$CFGFILE"
 echo -e "\t Plugin config file verified"
 
-# Extract and install the plugin support files from the tar.gz file
+# Extract and install the plugin support files from the tar.gz file, fixes files for unraid 6 gui
 echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
+	TEMP1="/tmp/&name;-inst/install-A/usr/local/emhttp/plugins/&name;"
 	if [ "x86_64" == "$ARCHTYPE" ]; then
 		tar --exclude='usr/local/emhttp/plugins/webGui' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
-		echo -e "`cat /usr/local/emhttp/plugins/&name;/&name;.page`\n\n---\n\n`cat /usr/local/emhttp/plugins/&name;/&name;.php`" > /usr/local/emhttp/plugins/&name;/&name;.page
-		rm -r /usr/local/emhttp/plugins/&name;/&name;.php
-		sed -i 's!\r!!g' /usr/local/emhttp/plugins/&name;/&name;.page
+		echo "---" > ${TEMP1}/&name;.page
+		echo "<?php include 'styles/&name;6.css';?>" >> "${TEMP1}/&name;.page"
+		echo "<?php include 'include/&name;.php';?>" >> "${TEMP1}/&name;.page"
 	else
 		tar --exclude='usr/local/emhttp/plugins/dynamix' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+		echo "<?php include 'styles/&name;5.css';?>" > "${TEMP1}/&name;.php"
+		echo "<?php include 'include/&name;.php';?>" >> "${TEMP1}/&name;.php"
 	fi
 	cp -Raf "/tmp/&name;-inst/install-A/." /
 else
