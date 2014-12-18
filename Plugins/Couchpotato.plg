@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"ee4f0a2e5765215a50bc405b6ad76384">
+	<!ENTITY controlMD5		"f7e30288dfbb53382ff85b46677a948f">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4c480980020834c5f059bc11f22aea5a">
@@ -259,7 +259,17 @@ echo -e "\t Plugin config file verified"
 echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
-	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+	TEMP1="/tmp/&name;-inst/install-A/usr/local/emhttp/plugins/&name;"
+	if [ "x86_64" == "$ARCHTYPE" ]; then
+		tar --exclude='usr/local/emhttp/plugins/webGui' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+		echo "---" &gt;&gt; "${TEMP1}/&name;.page"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;6.css';?&gt;" &gt;&gt; "${TEMP1}/&name;.page"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/include/&name;.php';?&gt;" &gt;&gt; "${TEMP1}/&name;.page"
+	else
+		tar --exclude='usr/local/emhttp/plugins/dynamix' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;5.css';?&gt;" &gt; "${TEMP1}/&name;.php"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/include/&name;.php';?&gt;" &gt;&gt; "${TEMP1}/&name;.php"
+	fi
 	cp -Raf "/tmp/&name;-inst/install-A/." /
 else
 	echo "...Install failed, no plugin control files located. Exiting"
@@ -329,7 +339,7 @@ if [ "$(ls -A &commonDIR; 2> /dev/null)" == "" ]; then
 	[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
 	[ -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page"
 	[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
-	[ -f "/usr/local/emhttp/plugins/dynamix/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/Phaze.png"
+	[ -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png"
 fi
 [ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"
