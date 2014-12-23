@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Serviio.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"3faa3a8708016492383caac5e13f15e6">
+	<!ENTITY controlMD5		"bd7eafa248df6b8cef0a06829032487b">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"90e3d6fcd109b14436b82b3850b3bba7">
@@ -262,6 +262,7 @@ echo -e "\t Plugin config file verified"
 echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
+	TEMP1="/tmp/&name;-inst/install-A/usr/local/emhttp/plugins/&name;"
 	if [ "x86_64" == "$ARCHTYPE" ]; then
 		tar --exclude='usr/local/emhttp/plugins/webGui' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
 		echo "---" &gt;&gt; "${TEMP1}/&name;.page"
@@ -284,9 +285,9 @@ if [ "$DEPMD5" != "" ]; then
 	echo -e "\t Installing plugin dependency files"
 	if [ -f "$DEPFILES" ]; then
 		mkdir -p "/tmp/&name;-inst/install-B"
-		[ ! -d "&commonDIR;/&name;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/&name;/var/log/setup/tmp"
+		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
-		ROOT="&commonDIR;/&name;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
+		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
 	else
 		echo "...Install failed, no plugin dependency files located. Exiting"
 		rm -f "/tmp/&name;-script"
@@ -332,12 +333,12 @@ sleep 1
 
 # Remove all files and directories pertaining to this plugin
 [ -d "&commonDIR;/&name;" ] &amp;&amp; rm -fR "&commonDIR;/&name;"
-if [ "$(ls -A &commonDIR; 2> /dev/null)" == "" ]; then
+if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
 	rm -Rf "&commonDIR;"
 	[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
 	[ -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page"
 	[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
-	[ -f "/usr/local/emhttp/plugins/dynamix/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/Phaze.png"
+	[ -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png"
 fi
 [ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"

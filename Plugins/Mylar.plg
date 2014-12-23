@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Mylar.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"bf7caad4963af284aa287d72ed2ba9fb">
+	<!ENTITY controlMD5		"c1b0811f909687ffff1f4605c03c99cf">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"3d9b4d0903184e10a8665fb95aa6fc00">
@@ -58,9 +58,6 @@ INSTALLED TO: /boot/config/plugins/&name;
 
 Mylar-PhAzE.tar.gz			-> This holds the plugin files
 Mylar.cfg					-> The config file used by the plugin
-
-INSTALLED TO: /boot/packages
-
 Mylar-PhAzE-Support.tar.gz		-> This holds the plugins dependency files
 
 INSTALLED TO: /usr/local/emhttp/plugins/webGui
@@ -107,11 +104,11 @@ CFGFILE="/boot/config/plugins/&name;/&name;.cfg"
 # Since this is a universal plugin for unraid, check if running 32 bit or 64 bit OS for dependencies
 ARCHTYPE=$( /usr/bin/uname -m )
 if [ "x86_64" == "$ARCHTYPE" ]; then
-	DEPFILES="/boot/packages/&dependencyFILE64;"
+	DEPFILES="/boot/config/plugins/&name;/&dependencyFILE64;"
 	DEPMD5="&dependencyMD564;"
 	DEPURL="&dependencyURL64;"
 else
-	DEPFILES="/boot/packages/&dependencyFILE;"
+	DEPFILES="/boot/config/plugins/&name;/&dependencyFILE;"
 	DEPMD5="&dependencyMD5;"
 	DEPURL="&dependencyURL;"
 fi
@@ -149,9 +146,6 @@ fi
 
 # Remove previous temp install directory if found
 [ -d /tmp/&name;-inst ] &amp;&amp; rm -fR /tmp/&name;-inst;
-
-# This makes the packages directory since latest unraid version doesn't have one made by default anymore
-[ ! -d "/boot/packages" ] &amp;&amp; mkdir -p "/boot/packages"
 
 echo "...Cleanup complete!"
 
@@ -228,9 +222,9 @@ fi
 # Removes other packages that don't match the version required, leaves out the proper ones if they exist
 find /boot/config/plugins/&name;/&name;-PhAzE-Control* -type f -not -name "&controlFILE;" 2> /dev/null | xargs rm 2> /dev/null
 if [ "x86_64" == "$ARCHTYPE" ]; then
-	find /boot/packages/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE64;" 2> /dev/null | xargs rm 2> /dev/null
+	find /boot/config/plugins/&name;/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE64;" 2> /dev/null | xargs rm 2> /dev/null
 else
-	find /boot/packages/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE;" 2> /dev/null | xargs rm 2> /dev/null
+	find /boot/config/plugins/&name;/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE;" 2> /dev/null | xargs rm 2> /dev/null
 fi
 
 echo "...Downloading complete!"
@@ -268,7 +262,17 @@ echo -e "\t Plugin config file verified"
 echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
-	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+	TEMP1="/tmp/&name;-inst/install-A/usr/local/emhttp/plugins/&name;"
+	if [ "x86_64" == "$ARCHTYPE" ]; then
+		tar --exclude='usr/local/emhttp/plugins/webGui' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+		echo "---" &gt;&gt; "${TEMP1}/&name;.page"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;6.css';?&gt;" &gt;&gt; "${TEMP1}/&name;.page"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/include/&name;.php';?&gt;" &gt;&gt; "${TEMP1}/&name;.page"
+	else
+		tar --exclude='usr/local/emhttp/plugins/dynamix' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;5.css';?&gt;" &gt; "${TEMP1}/&name;.php"
+		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/include/&name;.php';?&gt;" &gt;&gt; "${TEMP1}/&name;.php"
+	fi
 	cp -Raf "/tmp/&name;-inst/install-A/." /
 else
 	echo "...Install failed, no plugin control files located. Exiting"
@@ -281,12 +285,12 @@ if [ "$DEPMD5" != "" ]; then
 	echo -e "\t Installing plugin dependency files"
 	if [ -f "$DEPFILES" ]; then
 		mkdir -p "/tmp/&name;-inst/install-B"
-		[ ! -d "&commonDIR;/&name;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/&name;/var/log/setup/tmp"
+		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
-		ROOT="&commonDIR;/&name;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
-		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" ]; then
+		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
+		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/usr/share/curl/ca-bundle.crt" ]; then
 			mkdir -p "/usr/share/curl"
-			cp -f "&commonDIR;/&name;/usr/share/curl/ca-bundle.crt" "/usr/share/curl/ca-bundle.crt"
+			cp -f "&commonDIR;/usr/share/curl/ca-bundle.crt" "/usr/share/curl/ca-bundle.crt"
 		fi
 	else
 		echo "...Install failed, no plugin dependency files located. Exiting"
@@ -333,12 +337,13 @@ sleep 1
 
 # Remove all files and directories pertaining to this plugin
 [ -d "&commonDIR;/&name;" ] &amp;&amp; rm -fR "&commonDIR;/&name;"
-if [ "$(ls -A &commonDIR; 2> /dev/null)" == "" ]; then
+if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
 	rm -Rf "&commonDIR;"
-	rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
-	rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
+	[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
+	[ -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page"
+	[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
+	[ -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png"
 fi
-find /boot/packages/&name;-PhAzE-* -type f | xargs rm 2> /dev/null
 [ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"
 [ -e "/var/log/plugins/&name;.plg" ] &amp;&amp; rm -f "/var/log/plugins/&name;.plg"
