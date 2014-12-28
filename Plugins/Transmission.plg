@@ -8,13 +8,13 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Transmission.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"0d64bb033e732221edad62183bcb5cb7">
+	<!ENTITY controlMD5		"4aaffcde0176d32c285fb28a08e61d7a">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"1fedece02eeadb3f1a43e08a63011ae4">
+	<!ENTITY dependencyMD5	"358303e73d623d2c64b89bf0922a5aec">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"e6ec365a8f85980423d8809f75f7e2c3">
+	<!ENTITY dependencyMD564	"c6d97faa3320e23f8e4912637df8c485">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://download.salixos.org">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
