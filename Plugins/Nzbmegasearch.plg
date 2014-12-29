@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Nzbmegasearch.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"dfda7ef6d694dc0d4ed55be259c6814b">
+	<!ENTITY controlMD5		"59e9c066e66dc9fa41d885dad405cba6">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"d17ea840c2080d77eb590e7763417f33">
@@ -261,13 +261,12 @@ echo -e "\t Installing plugin control files"
 if [ -f "$CTRLFILES" ]; then
 	mkdir -p "/tmp/&name;-inst/install-A"
 	TEMP1="/tmp/&name;-inst/install-A/usr/local/emhttp/plugins/&name;"
+	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
 	if [ "x86_64" == "$ARCHTYPE" ]; then
-		tar --exclude='usr/local/emhttp/plugins/webGui' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
 		echo "---" &gt;&gt; "${TEMP1}/&name;.page"
 		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;6.css';?&gt;" &gt;&gt; "${TEMP1}/&name;.page"
 		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/include/&name;.php';?&gt;" &gt;&gt; "${TEMP1}/&name;.page"
 	else
-		tar --exclude='usr/local/emhttp/plugins/dynamix' -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
 		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;5.css';?&gt;" &gt; "${TEMP1}/&name;.php"
 		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/include/&name;.php';?&gt;" &gt;&gt; "${TEMP1}/&name;.php"
 	fi
@@ -333,6 +332,9 @@ if [ -f "/etc/rc.d/rc.&name;" ]; then
 fi
 sleep 1
 
+# Get the arch type to see what version of unraid is running
+ARCHTYPE=$( /usr/bin/uname -m )
+
 # Remove all files and directories pertaining to this plugin
 [ -d "&commonDIR;/&name;" ] &amp;&amp; rm -fR "&commonDIR;/&name;"
 if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
@@ -347,7 +349,9 @@ fi
 [ -e "/var/log/plugins/&name;.plg" ] &amp;&amp; rm -f "/var/log/plugins/&name;.plg"
 [ -d "/boot/config/plugins/&name;" ] &amp;&amp; rm -fR "/boot/config/plugins/&name;"
 [ -f "/boot/config/plugins/&name;.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg.old"
-[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
+if [ "x86_64" != "$ARCHTYPE" ]; then
+	[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
+fi
 
 echo "...Uninstall complete!"
 sleep 3
