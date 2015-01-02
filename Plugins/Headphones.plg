@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Headphones.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"b20a61d2f7e034ef27c8d34a93766624">
+	<!ENTITY controlMD5		"a5562f149452bca900d0d87aad6a096e">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e9f2d2341cb0130de9c1c0bdc38506e8">
@@ -355,7 +355,7 @@ if [ "x86_64" != "$ARCHTYPE" ]; then
 	[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
 fi
 
-echo "...Uninstall complete!"
+echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
 sleep 3
 </INLINE>
 </FILE>

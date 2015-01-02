@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Subsonic.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"897cd61cebee8b95689f3506a0bea79b">
+	<!ENTITY controlMD5		"ae73ae2eb56e524fcbd734dee391a295">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e5a5855aa6c9cd689991cbf9a351b046">
@@ -354,7 +354,7 @@ if [ "x86_64" != "$ARCHTYPE" ]; then
 	[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
 fi
 
-echo "...Uninstall complete!"
+echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
 sleep 3
 </INLINE>
 </FILE>

@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"3a839632e2186dcf633d06777b8f7278">
+	<!ENTITY controlMD5		"29b5a43dd44e478d515bbfe65a5543b2">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4c480980020834c5f059bc11f22aea5a">
@@ -352,7 +352,7 @@ if [ "x86_64" != "$ARCHTYPE" ]; then
 	[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
 fi
 
-echo "...Uninstall complete!"
+echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
 sleep 3
 </INLINE>
 </FILE>

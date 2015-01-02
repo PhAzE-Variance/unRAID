@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"f13c61ac097588b94183f845a27b6d93">
+	<!ENTITY controlMD5		"c170df8c5d78e95c4969a8c9fb4e0291">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e251bd5440dea56ba23bceb5ea04b9a4">
@@ -352,7 +352,7 @@ if [ "x86_64" != "$ARCHTYPE" ]; then
 	[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
 fi
 
-echo "...Uninstall complete!"
+echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
 sleep 3
 </INLINE>
 </FILE>

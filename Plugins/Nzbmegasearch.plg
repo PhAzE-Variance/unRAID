@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Nzbmegasearch.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"cb9a07c4be9dea2639e673d037db145d">
+	<!ENTITY controlMD5		"92d36381870c4e71e402d56acedc9db5">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"d17ea840c2080d77eb590e7763417f33">
@@ -353,7 +353,7 @@ if [ "x86_64" != "$ARCHTYPE" ]; then
 	[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
 fi
 
-echo "...Uninstall complete!"
+echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
 sleep 3
 </INLINE>
 </FILE>
