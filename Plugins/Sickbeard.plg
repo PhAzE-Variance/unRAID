@@ -111,15 +111,19 @@ else
 	DEPFILES="/boot/config/plugins/&name;/&dependencyFILE;"
 	DEPMD5="&dependencyMD5;"
 	DEPURL="&dependencyURL;"
+	echo " " # This makes unraid 5 console a little cleaner
 fi
 
-echo " " # This makes unraid 5 console a little cleaner
 echo "Cleaning up previous install files..."
 
 # Backwards compatibility from older PhAzE plugins, they had lower case folders
 if [ -d "/boot/config/plugins/sickbeard" ]; then
 	mv -f "/boot/config/plugins/sickbeard" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+fi
+if [ -f "/boot/config/plugins/&name;/sickbeard.cfg" ]; then
+	mv -f "/boot/config/plugins/&name;/sickbeard.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"
+	mv -f "/boot/config/plugins/&name;/&name;-temp.cfg" "/boot/config/plugins/&name;/&name;.cfg"
 fi
 
 # Verifies plugin control files if they exist, deletes if they are incorrect so new ones can be downloaded
@@ -256,6 +260,10 @@ fi
 [ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CHECKONLINE` ] &amp;&amp; echo "CHECKONLINE=\"yes\"" &gt;&gt; "$CFGFILE"
+
+# Force update REPO if it has changed from old plugin versions but only if old one was found
+TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
+[ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 echo -e "\t Plugin config file verified"
 
