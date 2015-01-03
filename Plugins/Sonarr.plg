@@ -18,10 +18,10 @@
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://update.nzbdrone.com/v2">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
-	<!ENTITY monoFILE		"&name;-PhAzE-Mono-3.8_x86.txz">
+	<!ENTITY monoFILE		"Mono-PhAzE-3.8_x86.txz">
 	<!ENTITY monoMD5		"210a94784850c9069df2ee4dd3fac30c">
 	<!ENTITY monoURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&monoFILE;">
-	<!ENTITY monoFILE64		"&name;-PhAzE-Mono-3.8_x64.txz">
+	<!ENTITY monoFILE64		"Mono-PhAzE-3.8_x64.txz">
 	<!ENTITY monoMD564		"1ee4ecda61aac94203d48013bca13ca5">
 	<!ENTITY monoURL64		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&monoFILE64;">
 ]>
