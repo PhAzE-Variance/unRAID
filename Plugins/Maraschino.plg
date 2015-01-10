@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Maraschino.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"f8ae27a62611ae869b1634ec1b622c35">
+	<!ENTITY controlMD5		"4f560ba44eb621843a1c769eefddb601">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"2fb85d1f48102ef4005fca9636fdb4bb">
@@ -120,6 +120,9 @@ echo "Cleaning up previous install files..."
 if [ -d "/boot/config/plugins/maraschino" ]; then
 	mv -f "/boot/config/plugins/maraschino" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;/maraschino.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/maraschino.png"
+	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
+	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
 fi
 if [ -f "/boot/config/plugins/&name;/maraschino.cfg" ]; then
 	mv -f "/boot/config/plugins/&name;/maraschino.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"

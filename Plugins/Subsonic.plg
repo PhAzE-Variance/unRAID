@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Subsonic.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"1de5baf0a6c9c565942cfe102af778da">
+	<!ENTITY controlMD5		"17891fa6f20bd67184c37c746132d3d7">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e5a5855aa6c9cd689991cbf9a351b046">
@@ -120,6 +120,9 @@ echo "Cleaning up previous install files..."
 if [ -d "/boot/config/plugins/subsonic" ]; then
 	mv -f "/boot/config/plugins/subsonic" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;/subsonic.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/subsonic.png"
+	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
+	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
 fi
 if [ -f "/boot/config/plugins/&name;/subsonic.cfg" ]; then
 	mv -f "/boot/config/plugins/&name;/subsonic.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"

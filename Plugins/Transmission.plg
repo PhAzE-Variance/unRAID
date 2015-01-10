@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Transmission.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"0e3bc15c7e95af30d04493e95ed95a34">
+	<!ENTITY controlMD5		"cb05f0769aa81852ca6e0eb73a0ac7d0">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"358303e73d623d2c64b89bf0922a5aec">
@@ -120,6 +120,9 @@ echo "Cleaning up previous install files..."
 if [ -d "/boot/config/plugins/transmission" ]; then
 	mv -f "/boot/config/plugins/transmission" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;/transmission.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/transmission.png"
+	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
+	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
 fi
 if [ -f "/boot/config/plugins/&name;/transmission.cfg" ]; then
 	mv -f "/boot/config/plugins/&name;/transmission.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"

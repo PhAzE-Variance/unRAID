@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"34e449269f146652e70ac13238ea16b4">
+	<!ENTITY controlMD5		"151ddf3843a05a734ae9e7cd28da769c">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e251bd5440dea56ba23bceb5ea04b9a4">
@@ -120,6 +120,9 @@ echo "Cleaning up previous install files..."
 if [ -d "/boot/config/plugins/sabnzbd" ]; then
 	mv -f "/boot/config/plugins/sabnzbd" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;/sabnzbd.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/sabnzbd.png"
+	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
+	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
 fi
 if [ -f "/boot/config/plugins/&name;/sabnzbd.cfg" ]; then
 	mv -f "/boot/config/plugins/&name;/sabnzbd.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"

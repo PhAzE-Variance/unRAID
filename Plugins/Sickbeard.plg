@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickbeard.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"93fb407cfa70690bd5411ec2f3708f18">
+	<!ENTITY controlMD5		"c985929ebacd14dbeefbe2f84dbaba4f">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"fa051c021d6413e0d888f939c360ed2f">
@@ -120,6 +120,9 @@ echo "Cleaning up previous install files..."
 if [ -d "/boot/config/plugins/sickbeard" ]; then
 	mv -f "/boot/config/plugins/sickbeard" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;/sickbeard.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/sickbeard.png"
+	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
+	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
 fi
 if [ -f "/boot/config/plugins/&name;/sickbeard.cfg" ]; then
 	mv -f "/boot/config/plugins/&name;/sickbeard.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"

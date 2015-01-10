@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Serviio.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"b044ab844787de27e416f27d1ef8fe9f">
+	<!ENTITY controlMD5		"ac02e528143ad97688eea523cdf01afb">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"90e3d6fcd109b14436b82b3850b3bba7">
@@ -121,6 +121,9 @@ echo "Cleaning up previous install files..."
 if [ -d "/boot/config/plugins/serviio" ]; then
 	mv -f "/boot/config/plugins/serviio" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;/serviio.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/serviio.png"
+	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
+	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
 fi
 if [ -f "/boot/config/plugins/&name;/serviio.cfg" ]; then
 	mv -f "/boot/config/plugins/&name;/serviio.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"

@@ -8,7 +8,7 @@
 	<!ENTITY plgVersion		"2.0.0">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Mbserver.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"8632f465e772255d2d54e650bc1a2020">
+	<!ENTITY controlMD5		"ee2eae2d2523c673088586a9f58b5e70">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4e168eba8cb2ef1992b753471f32de47">
@@ -132,6 +132,9 @@ echo "Cleaning up previous install files..."
 if [ -d "/boot/config/plugins/mb3server" ]; then
 	mv -f "/boot/config/plugins/mb3server" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;/mb3server.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/mb3server.png"
+	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
+	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
 fi
 if [ -f "/boot/config/plugins/&name;/mb3server.cfg" ]; then
 	mv -f "/boot/config/plugins/&name;/mb3server.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"
