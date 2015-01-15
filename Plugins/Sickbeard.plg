@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Sick Beard">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2.0.0">
+	<!ENTITY plgVersion		"2015.01.15.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickbeard.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"c985929ebacd14dbeefbe2f84dbaba4f">
+	<!ENTITY controlMD5		"b921b9f28f27a9b08ac1b5cb4c7b9089">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"fa051c021d6413e0d888f939c360ed2f">
@@ -100,6 +100,8 @@ All dependency files 				-> These are binaries and apps that are required to run
 # Setup plugin variables
 CTRLFILES="/boot/config/plugins/&name;/&controlFILE;"
 CFGFILE="/boot/config/plugins/&name;/&name;.cfg"
+OLDPNG="sickbeard.png"
+OLDNAME="sickbeard"
 
 # Since this is a universal plugin for unraid, check if running 32 bit or 64 bit OS for dependencies
 ARCHTYPE=$( /usr/bin/uname -m )
@@ -116,17 +118,33 @@ fi
 
 echo "Cleaning up previous install files..."
 
-# Backwards compatibility from older PhAzE plugins, they had lower case folders
-if [ -d "/boot/config/plugins/sickbeard" ]; then
-	mv -f "/boot/config/plugins/sickbeard" "/boot/config/plugins/&name;-temp"
+# Backwards compatibility from older PhAzE plugins, they had lower case folders and extra files in the bundle
+# Note that it is done this way because Unraid 6 is case insensitive and we only want it to execute if lower case was found
+DIREXISTS=`find "/boot/config/plugins" -type d -maxdepth 1 | grep "$OLDNAME"`
+if [ "$DIREXISTS" == "/boot/config/plugins/$OLDNAME" ]; then
+	[ -f "/etc/rc.d/rc.$OLDNAME" ] &amp;&amp; "/etc/rc.d/rc.$OLDNAME" stop
+	mv -f "/boot/config/plugins/$OLDNAME" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
-	[ -f "/boot/config/plugins/&name;/sickbeard.png" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/sickbeard.png"
+	[ -f "/boot/config/plugins/${OLDNAME}.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME}.plg.old"
+	[ -f "/boot/config/plugins/${OLDNAME}.64bit.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME}.64bit.plg.old"
+	[ -f "/boot/config/plugins/&name;/$OLDPNG" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/$OLDPNG"
 	[ -f "/boot/config/plugins/&name;/plgver.txt" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/plgver.txt"
 	[ -f "/boot/config/plugins/&name;/startcfg.sh" ] &amp;&amp; rm -f "/boot/config/plugins/&name;/startcfg.sh"
-fi
-if [ -f "/boot/config/plugins/&name;/sickbeard.cfg" ]; then
-	mv -f "/boot/config/plugins/&name;/sickbeard.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"
-	mv -f "/boot/config/plugins/&name;/&name;-temp.cfg" "/boot/config/plugins/&name;/&name;.cfg"
+	if [ -f "/boot/config/plugins/&name;/${OLDNAME}.cfg" ]; then
+		mv -f "/boot/config/plugins/&name;/${OLDNAME}.cfg" "/boot/config/plugins/&name;/&name;-temp.cfg"
+		mv -f "/boot/config/plugins/&name;/&name;-temp.cfg" "/boot/config/plugins/&name;/&name;.cfg"
+	fi
+	[ -d "/usr/local/emhttp/plugins/$OLDNAME" ] &amp;&amp; rm -rf "/usr/local/emhttp/plugins/$OLDNAME"
+	if [ "x86_64" == "$ARCHTYPE" ]; then
+		if [ -f "/boot/config/plugins/${OLDNAME}.64bit.plg" ]; then
+			/usr/local/sbin/plugin remove "${OLDNAME}.64bit.plg"
+		fi			
+	else
+		if [ -f "/boot/config/plugins/${OLDNAME}.plg" ]; then
+			GETVAR=`grep "ENTITY name" "/boot/config/plugins/${OLDNAME}.plg"`
+			[ "$GETVAR" == "" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME}.plg"
+		fi
+	fi
 fi
 
 # Verifies plugin control files if they exist, deletes if they are incorrect so new ones can be downloaded
