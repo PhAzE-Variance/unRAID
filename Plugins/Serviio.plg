@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Serviio">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.15.1">
+	<!ENTITY plgVersion		"2015.01.15.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Serviio.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"0d625e58037c579ed6a695e8e185a3d0">
+	<!ENTITY controlMD5		"427238946a08a81a8fdf9264e431835a">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"90e3d6fcd109b14436b82b3850b3bba7">
