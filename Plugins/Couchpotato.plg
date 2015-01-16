@@ -5,7 +5,7 @@
 	<!ENTITY displayName		"CouchPotato">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.15.1">
+	<!ENTITY plgVersion		"2015.01.15.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
 	<!ENTITY controlMD5		"6cbae74d9dc1463de37c828900edb60a">
@@ -100,7 +100,7 @@ All dependency files 				-> These are binaries and apps that are required to run
 # Setup plugin variables
 CTRLFILES="/boot/config/plugins/&name;/&controlFILE;"
 CFGFILE="/boot/config/plugins/&name;/&name;.cfg"
-OLDPNG="couchpotato_v2.png"
+OLDPNG="couchpotato.png"
 OLDNAME="couchpotato"
 
 # Since this is a universal plugin for unraid, check if running 32 bit or 64 bit OS for dependencies
