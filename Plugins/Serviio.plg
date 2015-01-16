@@ -5,19 +5,18 @@
 	<!ENTITY displayName		"Serviio">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.15.2">
+	<!ENTITY plgVersion		"2015.01.16.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Serviio.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"427238946a08a81a8fdf9264e431835a">
+	<!ENTITY controlMD5		"c8809e2a545c8eb3ef160758522805de">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"90e3d6fcd109b14436b82b3850b3bba7">
+	<!ENTITY dependencyMD5	"0e441e3d43f54d22c4e08080ee00bab7">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"7c6f8c9fd74d0cc46aaa46d42056f0e5">
+	<!ENTITY dependencyMD564	"0ae5934d846fc9157765b0835bb49b72">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL1		"http://serviio.org/download">
-	<!ENTITY appURL2		"http://kairoh.bitbucket.org/serviio-webui">
+	<!ENTITY appURL			"http://serviio.org/download">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
 ]>
 
@@ -267,25 +266,24 @@ if [ ! -f "$CFGFILE" ]; then
 	echo -e "\t No default config file found. Creating"
 	echo "# &displayName; configuration:" &gt; "$CFGFILE"
 fi
+[ `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; sed -i '/REPO1=.*/d' "$CFGFILE"
+[ `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; sed -i '/REPO2=.*/d' "$CFGFILE"
+[ `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; sed -i '/PORT=.*/d' "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep LIBRARYDIR` ] &amp;&amp; echo "LIBRARYDIR=\"/usr/local/&name;/library\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLUGINSDIR` ] &amp;&amp; echo "PLUGINSDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep LOGDIR` ] &amp;&amp; echo "LOGDIR=\"\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8123\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; echo "REPO1=\"&appURL1;\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; echo "REPO2=\"&appURL2;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep REPO` ] &amp;&amp; echo "REPO=\"&appURL;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CHECKONLINE` ] &amp;&amp; echo "CHECKONLINE=\"yes\"" &gt;&gt; "$CFGFILE"
 
 # Force update REPO if it has changed from old plugin versions but only if old one was found
-TESTREPO1=`cat "$CFGFILE" | grep 'REPO1=' | sed -n 's!REPO1="\(.*\)"!\1!p'`
-[ "$TESTREPO1" == "" ] &amp;&amp; sed -i "s!REPO1=\".*\"!REPO1=\"&appURL1;\"!g" "$CFGFILE"
-TESTREPO2=`cat "$CFGFILE" | grep 'REPO2=' | sed -n 's!REPO2="\(.*\)"!\1!p'`
-[ "$TESTREPO2" == "" ] &amp;&amp; sed -i "s!REPO2=\".*\"!REPO2=\"&appURL2;\"!g" "$CFGFILE"
+TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
+[ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 echo -e "\t Plugin config file verified"
 
@@ -383,7 +381,7 @@ if [ "x86_64" != "$ARCHTYPE" ]; then
 fi
 
 echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
-sleep 3
+sleep 1
 </INLINE>
 </FILE>
 

@@ -5,7 +5,7 @@
 	<!ENTITY displayName		"Subsonic">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.15.1">
+	<!ENTITY plgVersion		"2015.01.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Subsonic.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
 	<!ENTITY controlMD5		"7928848b39074864afe68440b5d5d35e">
@@ -384,7 +384,7 @@ if [ "x86_64" != "$ARCHTYPE" ]; then
 fi
 
 echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
-sleep 3
+sleep 1
 </INLINE>
 </FILE>
 
