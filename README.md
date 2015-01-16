@@ -16,6 +16,6 @@ Changes from V1 files:
 - Dependencies are all 'sandboxed' into a PhAzE-Common folder so unRAID core files are not modified
 - Uninstall button has been added to remove the plugin and all install files
 - Uninstall also removes dependencies but leave install and config directories intact
-- Compatible with Plugin Manager in unRAID v6 beta 4 or higher
+- Compatible with Plugin Manager in unRAID v6 beta 12 or higher
 
 -=PhAzE=-
