@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Serviio">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.16.2">
+	<!ENTITY plgVersion		"2015.01.22.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Serviio.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"c8809e2a545c8eb3ef160758522805de">
+	<!ENTITY controlMD5		"1c36dbdc360fb514504ef04f32929578">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"0e441e3d43f54d22c4e08080ee00bab7">
+	<!ENTITY dependencyMD5	"26c8f4b44689dbf9dee81edf06a48821">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"0ae5934d846fc9157765b0835bb49b72">
+	<!ENTITY dependencyMD564	"f23857a11c6af779360dc7b9016b1786">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://serviio.org/download">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
@@ -323,6 +323,17 @@ if [ "$DEPMD5" != "" ]; then
 	fi
 fi
 
+# Fixes a problem with linking in libvga required by ffmpeg
+[ "x86_64" == "$ARCHTYPE" ] &amp;&amp; LIBPATH="lib64" || LIBPATH="lib"
+if [ -e "&commonDIR;/usr/$LIBPATH/libvga.so" ]; then
+	[ ! -e "&commonDIR;/usr/$LIBPATH/libvga.so.1" ] &amp;&amp; ln -s "&commonDIR;/usr/$LIBPATH/libvga.so" "&commonDIR;/usr/$LIBPATH/libvga.so.1"
+else
+	if [ ! -e "&commonDIR;/usr/$LIBPATH/libvga.so.1" ]; then
+		echo "No version of libvga located, please install openssl."
+		sleep 3
+	fi
+fi
+
 # Correct any ^M (Windows carriage characters) in the important files
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; sed -i 's!\r!!g' "/etc/rc.d/rc.&name;"
 [ -d "/usr/local/emhttp/plugins/&name;/event" ] &amp;&amp; sed -i 's!\r!!g' /usr/local/emhttp/plugins/&name;/event/*
@@ -367,9 +378,7 @@ ARCHTYPE=$( /usr/bin/uname -m )
 if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
 	rm -Rf "&commonDIR;"
 	[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
-	[ -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page"
 	[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
-	[ -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png"
 fi
 [ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"

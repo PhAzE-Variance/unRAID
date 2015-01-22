@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Transmission">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.16.1">
+	<!ENTITY plgVersion		"2015.01.22.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Transmission.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"d012022267c0ee89cedb3d16895e5981">
+	<!ENTITY controlMD5		"05551b0f1a47530d1dde7cbb3264a0e9">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"358303e73d623d2c64b89bf0922a5aec">
+	<!ENTITY dependencyMD5	"a91a92bf53c99d830f386b5de420a048">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"c6d97faa3320e23f8e4912637df8c485">
+	<!ENTITY dependencyMD564	"3f556dec33e750b4028855c5a5de6635">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://download.salixos.org">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
@@ -372,9 +372,7 @@ ARCHTYPE=$( /usr/bin/uname -m )
 if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
 	rm -Rf "&commonDIR;"
 	[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
-	[ -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page"
 	[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
-	[ -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png"
 fi
 [ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"

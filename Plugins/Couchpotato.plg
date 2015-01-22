@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"CouchPotato">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.16.1">
+	<!ENTITY plgVersion		"2015.01.22.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"6cbae74d9dc1463de37c828900edb60a">
+	<!ENTITY controlMD5		"a6a26e1a8180343eeb22cfcbcf3de3c2">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4c480980020834c5f059bc11f22aea5a">
@@ -368,9 +368,7 @@ ARCHTYPE=$( /usr/bin/uname -m )
 if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
 	rm -Rf "&commonDIR;"
 	[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
-	[ -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/PhAzE.page"
 	[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
-	[ -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/dynamix/icons/phazeplugins.png"
 fi
 [ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"
