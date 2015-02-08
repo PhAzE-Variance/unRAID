@@ -5,7 +5,7 @@
 	<!ENTITY displayName		"Sonarr">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.22.1">
+	<!ENTITY plgVersion		"2015.02.08.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sonarr.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
 	<!ENTITY controlMD5		"5d91a0ed314a9d39f133f02c40ed7e24">
@@ -299,10 +299,10 @@ fi
 find /boot/config/plugins/&name;/&name;-PhAzE-Control* -type f -not -name "&controlFILE;" 2> /dev/null | xargs rm 2> /dev/null
 if [ "x86_64" == "$ARCHTYPE" ]; then
 	find /boot/config/plugins/&name;/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE64;" 2> /dev/null | xargs rm 2> /dev/null
-	find /boot/config/plugins/&name;/&name;-PhAzE-Mono* -type f -not -name "&monoFILE64;" 2> /dev/null | xargs rm 2> /dev/null
+	find /boot/config/plugins/&name;/Mono-PhAzE* -type f -not -name "&monoFILE64;" 2> /dev/null | xargs rm 2> /dev/null
 else
 	find /boot/config/plugins/&name;/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE;" 2> /dev/null | xargs rm 2> /dev/null
-	find /boot/config/plugins/&name;/&name;-PhAzE-Mono* -type f -not -name "&monoFILE;" 2> /dev/null | xargs rm 2> /dev/null
+	find /boot/config/plugins/&name;/Mono-PhAzE* -type f -not -name "&monoFILE;" 2> /dev/null | xargs rm 2> /dev/null
 fi
 
 echo "...Downloading complete!"
