@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Media Browser">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.22.1">
+	<!ENTITY plgVersion		"2015.02.08.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Mbserver.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
 	<!ENTITY controlMD5		"690f3b1960b4b89682b6f51bd9dff49a">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"be7693115c15420e15d64cd14076be3a">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.1_x86.tar.gz">
+	<!ENTITY dependencyMD5	"e545ebb5b6b7c39ab5bb456e38950d95">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"5e4acc34a9c0140c88d7d0c1be5b607c">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.1_x64.tar.gz">
+	<!ENTITY dependencyMD564	"b5c3d35013ebbbea8fd20d3af5442cab">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/MediaBrowser/MediaBrowser">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
@@ -385,6 +385,17 @@ if [ "$MONOMD5" != "" ]; then
 		echo "...Install failed, no Mono dependency file located. Exiting"
 		rm -f "/tmp/&name;-script"
 		exit 1
+	fi
+fi
+
+# Fixes a problem with linking in libvga required by ffmpeg
+[ "x86_64" == "$ARCHTYPE" ] &amp;&amp; LIBPATH="lib64" || LIBPATH="lib"
+if [ -e "&commonDIR;/usr/$LIBPATH/libvga.so" ]; then
+	[ ! -e "&commonDIR;/usr/$LIBPATH/libvga.so.1" ] &amp;&amp; ln -s "&commonDIR;/usr/$LIBPATH/libvga.so" "&commonDIR;/usr/$LIBPATH/libvga.so.1"
+else
+	if [ ! -e "&commonDIR;/usr/$LIBPATH/libvga.so.1" ]; then
+		echo "No version of libvga located, please install openssl."
+		sleep 3
 	fi
 fi
 
