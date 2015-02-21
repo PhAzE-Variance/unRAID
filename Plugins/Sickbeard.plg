@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Sick Beard">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.01.22.1">
+	<!ENTITY plgVersion		"2015.02.21.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickbeard.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"4ef020342212e272d3922fb59978905e">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
+	<!ENTITY controlMD5		"4f09037e469b3bb522f4465411843ab0">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"fa051c021d6413e0d888f939c360ed2f">
