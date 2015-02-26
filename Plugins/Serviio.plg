@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Serviio">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.02.21.1">
+	<!ENTITY plgVersion		"2015.02.26.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Serviio.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
-	<!ENTITY controlMD5		"deadbb461c4b0f14a3957c0eac9ceacf">
+	<!ENTITY controlMD5		"74d774d83bc51ae3833624a8705ab4ff">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.1_x86.tar.gz">
 	<!ENTITY dependencyMD5	"2f0ba1298c472077709a0f888d2f00c9">
@@ -17,7 +17,7 @@
 	<!ENTITY dependencyMD564	"825a8673bc5861d7624709ddbeadfb32">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL1		"http://serviio.org/download">
-	<!ENTITY appURL2		"http://wiki.serviio.org/doku.php?id=phpwebui">
+	<!ENTITY appURL2		"">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
 ]>
 
@@ -267,20 +267,20 @@ if [ ! -f "$CFGFILE" ]; then
 	echo -e "\t No default config file found. Creating"
 	echo "# &displayName; configuration:" &gt; "$CFGFILE"
 fi
-[ `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; sed -i '/REPO1=.*/d' "$CFGFILE"
+[ `cat "$CFGFILE" | grep REPO=` ] &amp;&amp; sed -i '/REPO=.*/d' "$CFGFILE"
 [ `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; sed -i '/REPO2=.*/d' "$CFGFILE"
-[ `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; sed -i '/PORT=.*/d' "$CFGFILE"
+[ `cat "$CFGFILE" | grep USEGUI` ] &amp;&amp; sed -i '/USEGUI=.*/d' "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep LIBRARYDIR` ] &amp;&amp; echo "LIBRARYDIR=\"/usr/local/&name;/library\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLUGINSDIR` ] &amp;&amp; echo "PLUGINSDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep LOGDIR` ] &amp;&amp; echo "LOGDIR=\"\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep USEGUI` ] &amp;&amp; echo "USEGUI=\"yes\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep USEGUI` ] &amp;&amp; echo "USEGUI=\"no\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8123\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; echo "REPO=\"&appURL1;\"" &gt;&gt; "$CFGFILE"
-#[ ! `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; echo "REPO2=\"&appURL2;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep REPO1` ] &amp;&amp; echo "REPO1=\"&appURL1;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep REPO2` ] &amp;&amp; echo "REPO2=\"&appURL2;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CHECKONLINE` ] &amp;&amp; echo "CHECKONLINE=\"yes\"" &gt;&gt; "$CFGFILE"
@@ -290,6 +290,7 @@ TESTREPO1=`cat "$CFGFILE" | grep 'REPO1=' | sed -n 's!REPO1="\(.*\)"!\1!p'`
 [ "$TESTREPO1" == "" ] &amp;&amp; sed -i "s!REPO1=\".*\"!REPO1=\"&appURL1;\"!g" "$CFGFILE"
 TESTREPO2=`cat "$CFGFILE" | grep 'REPO2=' | sed -n 's!REPO2="\(.*\)"!\1!p'`
 [[ "$TESTREPO2" == "" || "$TESTREPO2" == "http://kairoh.bitbucket.org/serviio-webui" ]] &amp;&amp; sed -i "s!REPO2=\".*\"!REPO2=\"&appURL2;\"!g" "$CFGFILE"
+
 sed -i 's!\r!!g' "$CFGFILE"
 echo -e "\t Plugin config file verified"
 
