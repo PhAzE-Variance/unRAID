@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"BitTorrent Sync">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.02.21.1">
+	<!ENTITY plgVersion		"2015.03.10.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Btsync.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
-	<!ENTITY controlMD5		"1668df607ea532ea408dc9085500d0ff">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.2.tar.gz">
+	<!ENTITY controlMD5		"904b3db8f124b7416b04158b639e1491">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
@@ -16,7 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
 	<!ENTITY dependencyMD564	"">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"http://www.getsync.com/download">
+	<!ENTITY appURL			"https://www.getsync.com/platforms/desktop">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
 ]>
 
@@ -282,6 +282,7 @@ fi
 # Force update REPO if it has changed from old plugin versions but only if old one was found
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "http://www.bittorrent.com/sync/download" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+[ "$TESTREPO" == "http://www.getsync.com/download" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 echo -e "\t Plugin config file verified"
 
