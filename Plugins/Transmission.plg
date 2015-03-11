@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Transmission">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.02.21.1">
+	<!ENTITY plgVersion		"2015.03.11.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Transmission.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
-	<!ENTITY controlMD5		"743d3a8617e4c2903ea885f16ef81d3e">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.2.tar.gz">
+	<!ENTITY controlMD5		"e2da5c2f9d93dec8b52e0812a266bef4">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"a91a92bf53c99d830f386b5de420a048">
@@ -16,7 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
 	<!ENTITY dependencyMD564	"3f556dec33e750b4028855c5a5de6635">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"http://download.salixos.org">
+	<!ENTITY appURL			"http://slackware.org.uk/slacky">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
 ]>
 
@@ -269,6 +269,7 @@ fi
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/config\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep LOGDIR` ] &amp;&amp; echo "LOGDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"9091\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep URLBASE` ] &amp;&amp; echo "URLBASE=\"transmission\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep USEAUTH` ] &amp;&amp; echo "USEAUTH=\"no\"" &gt;&gt; "$CFGFILE"
@@ -285,6 +286,7 @@ fi
 # Force update REPO if it has changed from old plugin versions but only if old one was found
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+[ "$TESTREPO" == "http://download.salixos.org" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 echo -e "\t Plugin config file verified"
 
