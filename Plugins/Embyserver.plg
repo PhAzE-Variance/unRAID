@@ -161,7 +161,7 @@ if [ "$DIREXISTS" == "/boot/config/plugins/$OLDNAME" ]; then
 fi
 
 # Backwards compatible from V2 old plugin name to V2 new plugin name if the name has changed
-if [ -f "/boot/config/plugins/$OLDNAME2" ]; then
+if [ -d "/boot/config/plugins/$OLDNAME2" ]; then
 	mkdir -p "/boot/config/plugins/&name;"
 	[ -f "/boot/config/plugins/${OLDNAME2}/${OLDNAME2}.cfg" ] &amp;&amp; cp -f "/boot/config/plugins/${OLDNAME2}/${OLDNAME2}.cfg" "/boot/config/plugins/&name;/&name;.cfg"
 	[ -f "/boot/config/plugins/${OLDNAME2}/&monoFILE;" ] &amp;&amp; cp -f "/boot/config/plugins/${OLDNAME2}/&monoFILE;" "/boot/config/plugins/&name;/&monoFILE;"
