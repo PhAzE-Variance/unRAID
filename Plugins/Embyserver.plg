@@ -5,7 +5,7 @@
 	<!ENTITY displayName		"Emby Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.03.27.2">
+	<!ENTITY plgVersion		"2015.03.28.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
 	<!ENTITY controlMD5		"f1676b815ba8f6cf0ad8ed7961f4b970">
@@ -151,7 +151,7 @@ if [ "$DIREXISTS" == "/boot/config/plugins/$OLDNAME" ]; then
 	if [ "x86_64" == "$ARCHTYPE" ]; then
 		if [ -f "/boot/config/plugins/${OLDNAME}.64bit.plg" ]; then
 			/usr/local/sbin/plugin remove "${OLDNAME}.64bit.plg"
-		fi			
+		fi
 	else
 		if [ -f "/boot/config/plugins/${OLDNAME}.plg" ]; then
 			GETVAR=`grep "ENTITY name" "/boot/config/plugins/${OLDNAME}.plg"`
@@ -169,7 +169,8 @@ if [ -d "/boot/config/plugins/$OLDNAME2" ]; then
 	if [ "x86_64" == "$ARCHTYPE" ]; then
 		if [ -f "/boot/config/plugins/${OLDNAME2}.plg" ]; then
 			/usr/local/sbin/plugin remove "${OLDNAME2}.plg"
-		fi			
+		fi
+		[ -f "/boot/config/plugins/${OLDNAME2}.plg" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME2}.plg"
 	else
 		if [ -f "/etc/rc.d/rc.${OLDNAME2}" ]; then
 			"/etc/rc.d/rc.${OLDNAME2}" removeplg
@@ -177,6 +178,7 @@ if [ -d "/boot/config/plugins/$OLDNAME2" ]; then
 			[ -f "/boot/config/plugins/${OLDNAME2}.plg" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME2}.plg"
 			[ -d "/usr/local/emhttp/plugins/$OLDNAME2" ] &amp;&amp; rm -rf "/usr/local/emhttp/plugins/$OLDNAME2"
 		fi
+		[ -f "/boot/config/plugins/${OLDNAME2}.plg" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME2}.plg"
 	fi
 fi
 
