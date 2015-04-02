@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Emby Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.03.28.1">
+	<!ENTITY plgVersion		"2015.04.01.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
 	<!ENTITY controlMD5		"f1676b815ba8f6cf0ad8ed7961f4b970">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"503d0d750a0b5bdac86b48e6ff0e59d3">
+	<!ENTITY dependencyMD5	"984c1874de63f56c477c10037028acad">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"e0a4f02179941f7efc07f329d6c1d798">
+	<!ENTITY dependencyMD564	"f426c63b83addb5740f3b14283074ab6">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/MediaBrowser/MediaBrowser">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
@@ -178,7 +178,6 @@ if [ -d "/boot/config/plugins/$OLDNAME2" ]; then
 			[ -f "/boot/config/plugins/${OLDNAME2}.plg" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME2}.plg"
 			[ -d "/usr/local/emhttp/plugins/$OLDNAME2" ] &amp;&amp; rm -rf "/usr/local/emhttp/plugins/$OLDNAME2"
 		fi
-		[ -f "/boot/config/plugins/${OLDNAME2}.plg" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME2}.plg"
 	fi
 fi
 
