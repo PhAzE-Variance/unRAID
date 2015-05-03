@@ -5,7 +5,7 @@
 	<!ENTITY displayName		"Headphones">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.02.21.1">
+	<!ENTITY plgVersion		"2015.05.03.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Headphones.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
 	<!ENTITY controlMD5		"04910d160c3eb2acb58bf881b18caf82">
@@ -39,16 +39,29 @@ All dependencies are installed as needed and everything is controllable from the
 Version History
 =========================================================================
 
-2.0.0		- Re-writen from scratch to run with Unraid 6 Plugin Manager
-		- Universal based plugin now downloads appropriate depedencies based on the OS architeture used
-		- Installs from USB copy if no internet connection is found and files exist on USB
-		- Added GUI setting to disable online checks by the plugin on page load
-		- Added dependency section to view main dependency versions and very they are working
-		- Added ability to uninstall the plugin and files from within the plugin GUI
-		- Dependencies now install to a common folder and app starts with a wrapper script
-		- Wrapper script adds environment variables for the common dependency folder upon start
-		- When plugin is uninstalled from PLGMGR or plugin GUI all files even dependencies are removed
-		- Plugin uninstall leaves installdir and configdir, up to user to delete those if they are not needed
+--><CHANGES>
+&displayName; Change Log
+========================
+####By: PhAzE
+
+2015.05.03.1
+------------
+- Fixed remove script so it no longer shows an error on Unraid 5
+- Added change log to plugins page on Unraid GUI
+
+INITIAL RELEASE
+---------------
+- Re-writen from scratch to run with Unraid 6 Plugin Manager
+- Universal based plugin now downloads appropriate depedencies based on the OS architeture used
+- Installs from USB copy if no internet connection is found and files exist on USB
+- Added GUI setting to disable online checks by the plugin on page load
+- Added dependency section to view main dependency versions and very they are working
+- Added ability to uninstall the plugin and files from within the plugin GUI
+- Dependencies now install to a common folder and app starts with a wrapper script
+- Wrapper script adds environment variables for the common dependency folder upon start
+- When plugin is uninstalled from PLGMGR or plugin GUI all files even dependencies are removed
+- Plugin uninstall leaves installdir and configdir, up to user to delete those if they are not needed
+</CHANGES><!--
 
 =========================================================================
 List of files created by this plugin
@@ -348,42 +361,47 @@ rm -f "/tmp/&name;-script"
 
 
 
-<FILE Run="/bin/bash" Method="remove">
+<FILE Name="/tmp/&name;-remove" Run="/bin/bash" Method="remove">
 <INLINE>
 # ==============================================
 # The 'remove' script
 # ==============================================
 
-echo "Uninstalling $displayName; plugin..."
-sleep 1
-
-# Stop the app if the control file exists
-if [ -f "/etc/rc.d/rc.&name;" ]; then
-	/etc/rc.d/rc.&name; stop
-fi
-sleep 1
-
-# Get the arch type to see what version of unraid is running
 ARCHTYPE=$( /usr/bin/uname -m )
+if [ "x86_64" == "$ARCHTYPE" ]; then
+	echo "Uninstalling $displayName; plugin..."
+	sleep 1
 
-# Remove all files and directories pertaining to this plugin
-[ -d "&commonDIR;/&name;" ] &amp;&amp; rm -fR "&commonDIR;/&name;"
-if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
-	rm -Rf "&commonDIR;"
-	[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
-	[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
-fi
-[ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
-[ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"
-[ -e "/var/log/plugins/&name;.plg" ] &amp;&amp; rm -f "/var/log/plugins/&name;.plg"
-[ -d "/boot/config/plugins/&name;" ] &amp;&amp; rm -fR "/boot/config/plugins/&name;"
-[ -f "/boot/config/plugins/&name;.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg.old"
-if [ "x86_64" != "$ARCHTYPE" ]; then
-	[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
+	# Stop the app if the control file exists
+	if [ -f "/etc/rc.d/rc.&name;" ]; then
+		/etc/rc.d/rc.&name; stop
+	fi
+	sleep 1
+
+	# Get the arch type to see what version of unraid is running
+	ARCHTYPE=$( /usr/bin/uname -m )
+
+	# Remove all files and directories pertaining to this plugin
+	[ -d "&commonDIR;/&name;" ] &amp;&amp; rm -fR "&commonDIR;/&name;"
+	if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
+		rm -Rf "&commonDIR;"
+		[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
+		[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
+	fi
+	[ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
+	[ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"
+	[ -e "/var/log/plugins/&name;.plg" ] &amp;&amp; rm -f "/var/log/plugins/&name;.plg"
+	[ -d "/boot/config/plugins/&name;" ] &amp;&amp; rm -fR "/boot/config/plugins/&name;"
+	[ -f "/boot/config/plugins/&name;.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg.old"
+	if [ "x86_64" != "$ARCHTYPE" ]; then
+		[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
+	fi
+
+	echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
+	sleep 1
 fi
 
-echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
-sleep 1
+[ -f "/tmp/&name;-remove" ] &amp;&amp; rm -f "/tmp/&name;-remove"
 </INLINE>
 </FILE>
 
