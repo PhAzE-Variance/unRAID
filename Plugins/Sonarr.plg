@@ -5,7 +5,7 @@
 	<!ENTITY displayName		"Sonarr">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.05.03.1">
+	<!ENTITY plgVersion		"2015.07.01.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sonarr.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
 	<!ENTITY controlMD5		"b22f313f3bd8da4409ccbe2bdca50d73">

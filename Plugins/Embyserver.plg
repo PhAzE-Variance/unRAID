@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Emby Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.05.27.1">
+	<!ENTITY plgVersion		"2015.07.01.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
-	<!ENTITY controlMD5		"4b9a9f7eb721cf7364da9dd967f3f442">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.2.tar.gz">
+	<!ENTITY controlMD5		"0567d6b682608f46d5e420a6f6bbf6c8">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
-	<!ENTITY dependencyMD5	"cfa631779c9857fd07ba844836afe75e">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.3_x86.tar.gz">
+	<!ENTITY dependencyMD5	"9592f0eadcff6db1218493565e441788">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.2_x64.tar.gz">
-	<!ENTITY dependencyMD564	"5cc961848417146ed902c3b2ec1d37e8">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.3_x64.tar.gz">
+	<!ENTITY dependencyMD564	"49d9f1b32ef74e688dc026db0b2b9e4e">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/MediaBrowser">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
@@ -475,6 +475,7 @@ fi
 echo -e "\t Cleaning up temp files/folders"
 rm -Rf "/tmp/&name;-inst"
 
+[ -f "/boot/config/plugins/Mbserver.plg" ] &amp;&amp; rm -f "/boot/config/plugins/Mbserver.plg" &gt; /dev/null 2>&amp;1
 echo "...Install complete!"
 
 rm -f "/tmp/&name;-script"
