@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"FlexGet">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.07.01.1">
+	<!ENTITY plgVersion		"2015.07.23.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Flexget.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"3d4b1a3aac99dde3563cb5d917341194">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
+	<!ENTITY controlMD5		"13615bbb2fcf25dc7fd25163d72810fb">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.1_x86.tar.gz">
-	<!ENTITY dependencyMD5	"32918eaf8d22e56901433d116ff2d2e8">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
+	<!ENTITY dependencyMD5	"fb10a68bfa3a0e4f24682b6df233c070">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.1_x64.tar.gz">
-	<!ENTITY dependencyMD564	"7e004c2e17c79d7e66a22a3fbdce97fe">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.2_x64.tar.gz">
+	<!ENTITY dependencyMD564	"368b3299515c75f479efceeb686f3bd1">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY PIPFILES		"&name;-PhAzE-pip-1.0.tar.gz">
 	<!ENTITY pipMD5			"475a2d649c31bc92e534a78b730ad3e7">
@@ -367,6 +367,7 @@ if [ "$DEPMD5" != "" ]; then
 		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
 		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
+		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; upgradepkg --install-new /tmp/&name;-inst/install-B/Certs/*
 	else
 		echo "...Install failed, no plugin dependency files located. Exiting"
 		rm -f "/tmp/&name;-script"
@@ -382,6 +383,9 @@ fi
 [ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
 /etc/rc.d/rc.&name; writeexport
 [ -f "&commonDIR;/&name;/startcfg.sh" ] &amp;&amp; sed -i 's!\r!!g' "&commonDIR;/&name;/startcfg.sh"
+
+# Setup the root CA certificates just for Unraid 5
+[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; sudo -Hu root /bin/bash -c '. &commonDIR;/&name;/startcfg.sh; /usr/sbin/update-ca-certificates'
 
 # Extract and install the plugin pip files from the tar.gz file
 if [ "&pipMD5;" != "" ]; then

@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Emby Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.07.01.1">
+	<!ENTITY plgVersion		"2015.07.23.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.2.tar.gz">
-	<!ENTITY controlMD5		"0567d6b682608f46d5e420a6f6bbf6c8">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.3.tar.gz">
+	<!ENTITY controlMD5		"db394c2a7a809fbba3cebf5d60b71c65">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.3_x86.tar.gz">
-	<!ENTITY dependencyMD5	"9592f0eadcff6db1218493565e441788">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
+	<!ENTITY dependencyMD5	"07c6208d25121ca9cb477b2d41dbfd72">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.3_x64.tar.gz">
-	<!ENTITY dependencyMD564	"49d9f1b32ef74e688dc026db0b2b9e4e">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.4_x64.tar.gz">
+	<!ENTITY dependencyMD564	"3ffe5776ad1b5f63aa3e15b744913a57">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/MediaBrowser">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
@@ -432,6 +432,7 @@ if [ "$DEPMD5" != "" ]; then
 		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
 		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
+		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; upgradepkg --install-new /tmp/&name;-inst/install-B/Certs/*
 	else
 		echo "...Install failed, no plugin dependency files located. Exiting"
 		rm -f "/tmp/&name;-script"
@@ -470,6 +471,9 @@ fi
 [ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
 /etc/rc.d/rc.&name; writeexport
 [ -f "&commonDIR;/&name;/startcfg.sh" ] &amp;&amp; sed -i 's!\r!!g' "&commonDIR;/&name;/startcfg.sh"
+
+# Setup the root CA certificates just for Unraid 5
+[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; sudo -Hu root /bin/bash -c '. &commonDIR;/&name;/startcfg.sh; /usr/sbin/update-ca-certificates'
 
 # Remove the temp install folder
 echo -e "\t Cleaning up temp files/folders"

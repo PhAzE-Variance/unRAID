@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Serviio">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.07.01.1">
+	<!ENTITY plgVersion		"2015.07.23.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Serviio.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
-	<!ENTITY controlMD5		"74d774d83bc51ae3833624a8705ab4ff">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.2.tar.gz">
+	<!ENTITY controlMD5		"2432fde770303fa7d31951a4b12b2e30">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
-	<!ENTITY dependencyMD5	"4282b8fbf7530a30dbff268b86814318">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.3_x86.tar.gz">
+	<!ENTITY dependencyMD5	"8f50143e857d25c24ea49d65019bd918">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.2_x64.tar.gz">
-	<!ENTITY dependencyMD564	"7c9c8fed7a18157a726b139367facc83">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.3_x64.tar.gz">
+	<!ENTITY dependencyMD564	"56f6f1f771cc9847d7097c0e616ce445">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL1		"http://serviio.org/download">
 	<!ENTITY appURL2		"">
@@ -348,6 +348,7 @@ if [ "$DEPMD5" != "" ]; then
 		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
 		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
+		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; upgradepkg --install-new /tmp/&name;-inst/install-B/Certs/*
 	else
 		echo "...Install failed, no plugin dependency files located. Exiting"
 		rm -f "/tmp/&name;-script"
@@ -374,6 +375,9 @@ fi
 [ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
 /etc/rc.d/rc.&name; writeexport
 [ -f "&commonDIR;/&name;/startcfg.sh" ] &amp;&amp; sed -i 's!\r!!g' "&commonDIR;/&name;/startcfg.sh"
+
+# Setup the root CA certificates just for Unraid 5
+[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; sudo -Hu root /bin/bash -c '. &commonDIR;/&name;/startcfg.sh; /usr/sbin/update-ca-certificates'
 
 # Remove the temp install folder
 echo -e "\t Cleaning up temp files/folders"
