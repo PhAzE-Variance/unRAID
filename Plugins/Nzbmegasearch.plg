@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"NZBmegasearcH">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.07.23.1">
+	<!ENTITY plgVersion		"2015.07.28.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Nzbmegasearch.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.2.tar.gz">
-	<!ENTITY controlMD5		"25e9d1ddba4c9e9de30ceb0628b4bc7d">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.3.tar.gz">
+	<!ENTITY controlMD5		"682831cc28afb2498897184a92c15a32">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
 	<!ENTITY dependencyMD5	"3973fdb4c7ff85f82d0f6f7e671ac6b4">
@@ -326,12 +326,13 @@ if [ "$DEPMD5" != "" ]; then
 		mkdir -p "/tmp/&name;-inst/install-B"
 		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
+		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; mv -f /tmp/&name;-inst/install-B/Certs /tmp/&name;-inst
 		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
 		if [ ! -f "/usr/share/curl/ca-bundle.crt" ] &amp;&amp; [ -f "&commonDIR;/usr/share/curl/ca-bundle.crt" ]; then
 			mkdir -p "/usr/share/curl"
 			cp -f "&commonDIR;/usr/share/curl/ca-bundle.crt" "/usr/share/curl/ca-bundle.crt"
 		fi
-		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; upgradepkg --install-new /tmp/&name;-inst/install-B/Certs/*
+		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; upgradepkg --install-new /tmp/&name;-inst/Certs/*
 	else
 		echo "...Install failed, no plugin dependency files located. Exiting"
 		rm -f "/tmp/&name;-script"

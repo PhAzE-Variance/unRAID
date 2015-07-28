@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"FlexGet">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.07.23.1">
+	<!ENTITY plgVersion		"2015.07.28.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Flexget.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.1.tar.gz">
-	<!ENTITY controlMD5		"13615bbb2fcf25dc7fd25163d72810fb">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.2.tar.gz">
+	<!ENTITY controlMD5		"64043d0229af2f5c21d49ec1830cbcec">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
 	<!ENTITY dependencyMD5	"fb10a68bfa3a0e4f24682b6df233c070">
@@ -366,8 +366,9 @@ if [ "$DEPMD5" != "" ]; then
 		mkdir -p "/tmp/&name;-inst/install-B"
 		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
 		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
+		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; mv -f /tmp/&name;-inst/install-B/Certs /tmp/&name;-inst
 		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
-		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; upgradepkg --install-new /tmp/&name;-inst/install-B/Certs/*
+		[ "$ARCHTYPE" != "x86_64" ] &amp;&amp; upgradepkg --install-new /tmp/&name;-inst/Certs/*
 	else
 		echo "...Install failed, no plugin dependency files located. Exiting"
 		rm -f "/tmp/&name;-script"
