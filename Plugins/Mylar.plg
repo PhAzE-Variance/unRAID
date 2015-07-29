@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Mylar">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.07.28.1">
+	<!ENTITY plgVersion		"2015.07.28.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Mylar.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.3.tar.gz">
-	<!ENTITY controlMD5		"5eb47a85af2e7c1112b2b1d40b51198a">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.4.tar.gz">
+	<!ENTITY controlMD5		"53abddd001f016df97b77f8354c5a306">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
 	<!ENTITY dependencyMD5	"374a28035b41597ac869b172177e71f9">
