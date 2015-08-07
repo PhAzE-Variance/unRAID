@@ -11,10 +11,10 @@
 	<!ENTITY controlMD5		"89faac4a70084b638454a9eccfad4282">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"4fd8033d423818c1bcf5b10f966bd19f">
+	<!ENTITY dependencyMD5	"a1c1d75018a146b1111b529b0d4c43f0">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"3373ad007acd345c949f25aaf836f765">
+	<!ENTITY dependencyMD564	"f468a7b31b53a1f3d69064fe5e3ffc37">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://vaemendis.net/ubooquity/static2/download">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
