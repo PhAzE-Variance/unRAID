@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Ubooquity">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.07.28.1">
+	<!ENTITY plgVersion		"2015.08.07.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Ubooquity.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-1.0.tar.gz">
-	<!ENTITY controlMD5		"7a2c742dac09d3a39365f2bbf7ab214e">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
+	<!ENTITY controlMD5		"89faac4a70084b638454a9eccfad4282">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"a1c1d75018a146b1111b529b0d4c43f0">
+	<!ENTITY dependencyMD5	"4fd8033d423818c1bcf5b10f966bd19f">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"f468a7b31b53a1f3d69064fe5e3ffc37">
+	<!ENTITY dependencyMD564	"3373ad007acd345c949f25aaf836f765">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://vaemendis.net/ubooquity/static2/download">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
@@ -102,6 +102,42 @@ All dependency files 				-> These are binaries and apps that are required to run
 <FILE Name="/tmp/&name;-script" Run="/bin/bash">
 <INLINE>
 # =========================================================================
+# Logger function - Logs to /tmp/PhAzE-Logs/ and to unRAID display
+# =========================================================================
+
+app_logger() {
+	# First passed item is the text ($1), secone item is severity ($2 - info, warn, error), third is where to log ($3 - all, log)
+	local PLGLOGFILE="/tmp/PhAzE-Logs/&name;.log"
+	local LOGTEXT=$1
+	local LOGTYPE=$2
+	local LOGVAR=$3
+	local TIMESTAMP=`date +"%Y-%m-%d %T"`
+
+	# Set the type of log
+	if [ "$LOGTYPE" == "info" ]; then
+		TYPE="[INFO]"
+	elif [ "$LOGTYPE" == "warn" ]; then
+		TYPE="[WARNING]"
+	elif [ "$LOGTYPE" == "error" ]; then
+		TYPE="[ERROR]"
+	fi
+
+	# If log file doesn't exist, make it
+	if [ ! -f "$PLGLOGFILE" ]; then
+		mkdir -p "/tmp/PhAzE-Logs"
+		touch "$PLGLOGFILE"
+	fi
+
+	# Echo the text to display and log, or just log file
+	if [ "$LOGVAR" == "all" ]; then
+		echo -e "${LOGTEXT}"
+		echo -e "${TIMESTAMP} ${TYPE}\t${LOGTEXT}" >> "$PLGLOGFILE"
+	elif [ "$LOGVAR" == "log" ]; then
+		echo -e "${TIMESTAMP} ${TYPE}\t${LOGTEXT}" >> "$PLGLOGFILE"
+	fi
+}
+
+# =========================================================================
 # Clean up previous files that don't match the known md5
 # =========================================================================
 
@@ -110,6 +146,10 @@ CTRLFILES="/boot/config/plugins/&name;/&controlFILE;"
 CFGFILE="/boot/config/plugins/&name;/&name;.cfg"
 OLDPNG="ubooquity.png"
 OLDNAME="ubooquity"
+
+app_logger "************************** " info log
+app_logger "Installing &name; plugin " info all
+app_logger "************************** " info log
 
 # Since this is a universal plugin for unraid, check if running 32 bit or 64 bit OS for dependencies
 ARCHTYPE=$( /usr/bin/uname -m )
@@ -121,15 +161,13 @@ else
 	DEPFILES="/boot/config/plugins/&name;/&dependencyFILE;"
 	DEPMD5="&dependencyMD5;"
 	DEPURL="&dependencyURL;"
-	echo " " # This makes unraid 5 console a little cleaner
 fi
-
-echo "Cleaning up previous install files..."
 
 # Backwards compatibility from older PhAzE plugins, they had lower case folders and extra files in the bundle
 # Note that it is done this way because Unraid 6 is case insensitive and we only want it to execute if lower case was found
 DIREXISTS=`find "/boot/config/plugins" -type d -maxdepth 1 | grep -v "_alt" |grep "$OLDNAME"`
 if [ "$DIREXISTS" == "/boot/config/plugins/$OLDNAME" ]; then
+	app_logger "Converting old plugin style to current standards " info log
 	[ -f "/etc/rc.d/rc.$OLDNAME" ] &amp;&amp; "/etc/rc.d/rc.$OLDNAME" stop
 	mv -f "/boot/config/plugins/$OLDNAME" "/boot/config/plugins/&name;-temp"
 	mv -f "/boot/config/plugins/&name;-temp" "/boot/config/plugins/&name;"
@@ -153,40 +191,45 @@ if [ "$DIREXISTS" == "/boot/config/plugins/$OLDNAME" ]; then
 			[ "$GETVAR" == "" ] &amp;&amp; rm -f "/boot/config/plugins/${OLDNAME}.plg"
 		fi
 	fi
+	app_logger "Conversion OK! " info log
 fi
+
+app_logger "Checking for current bundle files " info all
 
 # Verifies plugin control files if they exist, deletes if they are incorrect so new ones can be downloaded
 if [ -f "$CTRLFILES" ]; then
 	MD5TEST=`echo "&controlMD5;  $CTRLFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
 	if [ "$MD5TEST" == "0" ]; then
-		echo -e "\t Found wrong version of plugin control files. Deleting"
+		app_logger "Control file: Found wrong version, deleting " info all
 		rm -f "$CTRLFILES"
 	else
-		echo -e "\t Found correct version of plugin control files. Ignoring"
+		app_logger "Control file: Found correct version " info all
 	fi
+else
+	app_logger "Control file: Not Found " info all
 fi
 
 # Verifies plugin dependency files if they exist, deletes if they are incorrect so new ones can be downloaded
 if [ -f "$DEPFILES" ]; then
 	MD5TEST=`echo "$DEPMD5  $DEPFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
 	if [ "$MD5TEST" == "0" ]; then
-		echo -e "\t Found wrong version of plugin dependency files. Deleting"
+		app_logger "Dependency file: Found wrong version, deleting " info all
 		rm -f "$DEPFILES"
 	else
-		echo -e "\t Found correct version of plugin dependency files. Ignoring"
+		app_logger "Dependency file: Found correct version " info all
 	fi
+else
+	app_logger "Dependency file: Not found " info all
 fi
 
 # Remove previous temp install directory if found
 [ -d /tmp/&name;-inst ] &amp;&amp; rm -fR /tmp/&name;-inst;
 
-echo "...Cleanup complete!"
+app_logger "Check OK! " info all
 
 # =========================================================================
 # Download required plugin files
 # =========================================================================
-
-echo "Downloading any missing plugin files..."
 
 # Check for net connectivity to the repo, 5 second timeout then fails
 NETCHECK=`timeout 5 wget --no-check-certificate -qST4 --spider "https://github.com/PhAzE-Variance" 2>&amp;1 | grep HTTP | tail -1 | cut -f1 | awk '{print $NF}'`
@@ -198,27 +241,27 @@ fi
 
 # Downloads plugin control files if they don't exist, then verify them
 if [ ! -f "$CTRLFILES" ]; then
-	echo -e "\t Latest plugin control files downloading"
+	app_logger "Downloading new control file " info all
 	if [ "$HASNET" == "yes" ]; then
 		mkdir -p "/boot/config/plugins/&name;"
 		wget --no-check-certificate -qO "$CTRLFILES" "&controlURL;"
 		if [ -f "$CTRLFILES" ]; then
 			MD5TEST1=`echo "&controlMD5;  $CTRLFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
 			if [ "$MD5TEST1" == "1" ]; then
-				echo -e "\t Plugin control files have passed MD5 check"
+				app_logger "Download OK: Control file passed MD5 check " info all
 			else
-				echo "...Downloaded plugin control files have failed MD5 check. Deleting and aborting install"
+				app_logger "Install failed: Downloaded control file failed MD5 check " error all
 				rm -f "$CTRLFILES"
 				rm -f "/tmp/&name;-script"
 				exit 1
 			fi
 		else
-			echo "...Unable to download missing plugin control files. Aborting install"
+			app_logger "Install failed: Control file download did not complete " error all
 			rm -f "/tmp/&name;-script"
 			exit 1
 		fi
 	else
-		echo "...Unable to download missing plugin control files. Aborting install"
+		app_logger "Install failed: Unable to detect internet connection " error all
 		rm -f "/tmp/&name;-script"
 		exit 1
 	fi
@@ -226,31 +269,33 @@ fi
 
 # Downloads plugin dependency files if they don't exist, then verify them
 if [ ! -f "$DEPFILES" ] &amp;&amp; [ "$DEPMD5" != "" ]; then
-	echo -e "\t Latest plugin dependency files downloading"
+	app_logger "Downloading new dependency file " info all
 	if [ "$HASNET" == "yes" ]; then
 		mkdir -p /boot/config/plugins/&name;
 		wget --no-check-certificate -qO "$DEPFILES" "$DEPURL"
 		if [ -f "$DEPFILES" ]; then
 			MD5TEST2=`echo "$DEPMD5  $DEPFILES" | md5sum --quiet --status -c - &amp;&amp; echo "1" || echo "0"`
 			if [ "$MD5TEST2" == "1" ]; then
-				echo -e "\t Plugin dependency files have passed MD5 check"
+				app_logger "Download OK: Dependency file passed MD5 check " info all
 			else
-				echo "...Downloaded plugin dependency files have failed MD5 check. Deleting and aborting install"
+				app_logger "Install failed: Downloaded dependency file failed MD5 check " error all
 				rm -f "$DEPFILES"
 				rm -f "/tmp/&name;-script"
 				exit 1
 			fi
 		else
-			echo "...Unable to download missing plugin dependency files. Aborting install"
+			app_logger "Install failed: Dependency file download did not complete " error all
 			rm -f "/tmp/&name;-script"
 			exit 1
 		fi
 	else
-		echo "...Unable to download missing plugin dependency files. Aborting install"
+		app_logger "Install failed: Unable to detect internet connection " error all
 		rm -f "/tmp/&name;-script"
 		exit 1
 	fi
 fi
+
+app_logger "Locating and removing old bundle files " info log
 
 # Removes other packages that don't match the version required, leaves out the proper ones if they exist
 find /boot/config/plugins/&name;/&name;-PhAzE-Control* -type f -not -name "&controlFILE;" 2> /dev/null | xargs rm 2> /dev/null
@@ -260,20 +305,21 @@ else
 	find /boot/config/plugins/&name;/&name;-PhAzE-Dependency* -type f -not -name "&dependencyFILE;" 2> /dev/null | xargs rm 2> /dev/null
 fi
 
-echo "...Downloading complete!"
-
 # ==============================================
 # The 'install' script
 # ==============================================
 
-echo "Running install script for &displayName;..."
+app_logger "Running install script for &displayName; " info all
 
 # Verify the elements in the plugin default config file, add any that are missing
 if [ ! -f "$CFGFILE" ]; then
 	mkdir -p "/boot/config/plugins/&name;"
-	echo -e "\t No default config file found. Creating"
+	app_logger "Creating default plugin config file " info log
 	echo "# &displayName; configuration:" &gt; "$CFGFILE"
 fi
+
+app_logger "Verifying plugin config file elements " info log
+
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/config\"" &gt;&gt; "$CFGFILE"
@@ -295,14 +341,15 @@ fi
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
-echo -e "\t Plugin config file verified"
+app_logger "Verification OK! " info log
+
 
 # Extract and install the plugin support files from the tar.gz file
-echo -e "\t Installing plugin control files"
+app_logger "Installing control file " info all
 if [ -f "$CTRLFILES" ]; then
-	mkdir -p "/tmp/&name;-inst/install-A"
-	TEMP1="/tmp/&name;-inst/install-A/usr/local/emhttp/plugins/&name;"
-	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst/install-A"
+	mkdir -p "/tmp/&name;-inst"
+	TEMP1="/tmp/&name;-inst/usr/local/emhttp/plugins/&name;"
+	tar -xf "$CTRLFILES" -C "/tmp/&name;-inst"
 	if [ "x86_64" == "$ARCHTYPE" ]; then
 		echo "---" &gt;&gt; "${TEMP1}/&name;.page"
 		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;6.css';?&gt;" &gt;&gt; "${TEMP1}/&name;.page"
@@ -311,42 +358,37 @@ if [ -f "$CTRLFILES" ]; then
 		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/styles/&name;5.css';?&gt;" &gt; "${TEMP1}/&name;.php"
 		echo "&lt;?php include '/usr/local/emhttp/plugins/&name;/include/&name;.php';?&gt;" &gt;&gt; "${TEMP1}/&name;.php"
 	fi
-	cp -Raf "/tmp/&name;-inst/install-A/." /
+	cp -Raf "/tmp/&name;-inst/." /
 else
-	echo "...Install failed, no plugin control files located. Exiting"
+	app_logger "Install failed: Control file not found " error all
 	rm -f "/tmp/&name;-script"
 	exit 1
 fi
 
-# Extract and install the plugin dependency files from the tar.gz file
-if [ "$DEPMD5" != "" ]; then
-	echo -e "\t Installing plugin dependency files"
-	if [ -f "$DEPFILES" ]; then
-		mkdir -p "/tmp/&name;-inst/install-B"
-		[ ! -d "&commonDIR;/var/log/setup/tmp" ] &amp;&amp; mkdir -p "&commonDIR;/var/log/setup/tmp"
-		tar -xf "$DEPFILES" -C "/tmp/&name;-inst/install-B"
-		ROOT="&commonDIR;" upgradepkg --install-new /tmp/&name;-inst/install-B/*
-	else
-		echo "...Install failed, no plugin dependency files located. Exiting"
-		rm -f "/tmp/&name;-script"
-		exit 1
-	fi
-fi
+app_logger "Control file install OK! " info all
 
 # Correct any ^M (Windows carriage characters) in the important files
+app_logger "Removing Windows carriage characters from important files " info log
 [ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; sed -i 's!\r!!g' "/etc/rc.d/rc.&name;"
 [ -d "/usr/local/emhttp/plugins/&name;/event" ] &amp;&amp; sed -i 's!\r!!g' /usr/local/emhttp/plugins/&name;/event/*
 
-# Create or update the export file
-[ ! -d "&commonDIR;/&name;" ] &amp;&amp; mkdir -p "&commonDIR;/&name;"
-/etc/rc.d/rc.&name; writeexport
-[ -f "&commonDIR;/&name;/startcfg.sh" ] &amp;&amp; sed -i 's!\r!!g' "&commonDIR;/&name;/startcfg.sh"
-
 # Remove the temp install folder
-echo -e "\t Cleaning up temp files/folders"
+app_logger "Cleaning up temp files and folders" info all
 rm -Rf "/tmp/&name;-inst"
 
-echo "...Install complete!"
+# If plugin already exists and is a different version, make it .old for downgrade purposes
+if [ -f "/boot/config/plugins/&name;.plg" ]; then
+	CURPLGVER=`grep 'ENTITY plgVersion' "/boot/config/plugins/&name;.plg" | sed -n 's!.*\t"\(.*\)">.*!\1!p'`
+	if [ "$CURPLGVER" != "&plgVersion;" ]; then
+		app_logger "Creating downgrade plugin file with old plugin" info log
+		[ -f "/boot/config/plugins/&name;.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg.old"
+		cp -f "/boot/config/plugins/&name;.plg" "/boot/config/plugins/&name;.plg.old"
+	fi
+fi
+
+app_logger "************************** " info log
+app_logger "Install complete!" info all
+app_logger "************************** " info log
 
 rm -f "/tmp/&name;-script"
 </INLINE>
@@ -360,9 +402,41 @@ rm -f "/tmp/&name;-script"
 # The 'remove' script
 # ==============================================
 
+app_logger() {
+	# First passed item is the text ($1), secone item is severity ($2 - info, warn, error), third is where to log ($3 - all, log)
+	local PLGLOGFILE="/tmp/PhAzE-Logs/&name;.log"
+	local LOGTEXT=$1
+	local LOGTYPE=$2
+	local LOGVAR=$3
+	local TIMESTAMP=`date +"%Y-%m-%d %T"`
+
+	# Set the type of log
+	if [ "$LOGTYPE" == "info" ]; then
+		TYPE="[INFO]"
+	elif [ "$LOGTYPE" == "warn" ]; then
+		TYPE="[WARNING]"
+	elif [ "$LOGTYPE" == "error" ]; then
+		TYPE="[ERROR]"
+	fi
+
+	# If log file doesn't exist, make it
+	if [ ! -f "$PLGLOGFILE" ]; then
+		mkdir -p "/tmp/PhAzE-Logs"
+		touch "$PLGLOGFILE"
+	fi
+
+	# Echo the text to display and log, or just log file
+	if [ "$LOGVAR" == "all" ]; then
+		echo -e "${LOGTEXT}"
+		echo -e "${TIMESTAMP} ${TYPE}\t${LOGTEXT}" >> "$PLGLOGFILE"
+	elif [ "$LOGVAR" == "log" ]; then
+		echo -e "${TIMESTAMP} ${TYPE}\t${LOGTEXT}" >> "$PLGLOGFILE"
+	fi
+}
+
 ARCHTYPE=$( /usr/bin/uname -m )
 if [ "x86_64" == "$ARCHTYPE" ]; then
-	echo "Uninstalling $displayName; plugin..."
+	app_logger "Uninstalling $DISPLAYNAME plugin..." info all
 	sleep 1
 
 	# Stop the app if the control file exists
@@ -378,11 +452,15 @@ if [ "x86_64" == "$ARCHTYPE" ]; then
 	[ -d "&commonDIR;/&name;" ] &amp;&amp; rm -fR "&commonDIR;/&name;"
 	if [ "$(find &commonDIR; -type f | grep startcfg.sh | wc -l 2> /dev/null)" == "0" ]; then
 		rm -Rf "&commonDIR;"
+	fi
+	local TESTPLG=`grep -H -m1 "ENTITY author" /boot/config/plugins/*.plg 2> /dev/null | grep "PhAzE" | cut -d: -f1 | grep -v "&name;.plg" | wc -l 2> /dev/null`
+	if [ "$TESTPLG" == "0" ]; then
 		[ -f "/usr/local/emhttp/plugins/webGui/PhAzE.page" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/PhAzE.page"
 		[ -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png" ] &amp;&amp; rm -f "/usr/local/emhttp/plugins/webGui/icons/Phaze.png"
 	fi
 	[ -d "/usr/local/emhttp/plugins/&name;" ] &amp;&amp; rm -fR "/usr/local/emhttp/plugins/&name;"
 	[ -f "/etc/rc.d/rc.&name;" ] &amp;&amp; rm -f "/etc/rc.d/rc.&name;"
+	[ -f "/usr/bin/&name;-env" ] &amp;&amp; rm -f "/usr/bin/&name;-env"
 	[ -e "/var/log/plugins/&name;.plg" ] &amp;&amp; rm -f "/var/log/plugins/&name;.plg"
 	[ -d "/boot/config/plugins/&name;" ] &amp;&amp; rm -fR "/boot/config/plugins/&name;"
 	[ -f "/boot/config/plugins/&name;.plg.old" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg.old"
@@ -390,7 +468,9 @@ if [ "x86_64" == "$ARCHTYPE" ]; then
 		[ -f "/boot/config/plugins/&name;.plg" ] &amp;&amp; rm -f "/boot/config/plugins/&name;.plg"
 	fi
 
-	echo "...Uninstall complete! Please reboot to remove any remaining dependency files."
+	app_logger "************************** " info log
+	app_logger "Uninstall complete - Reboot to remove remaining dependency files " info all
+	app_logger "************************** " info log
 	sleep 1
 fi
 
