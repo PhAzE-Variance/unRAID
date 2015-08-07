@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Ubooquity">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.08.07.2">
+	<!ENTITY plgVersion		"2015.08.07.3">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Ubooquity.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"89faac4a70084b638454a9eccfad4282">
+	<!ENTITY controlMD5		"115b2bce3f09ab58b7837ee4d4d7dcfc">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"02e190997b4c6f665aafc72a27509592">
