@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Ubooquity">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.08.07.1">
+	<!ENTITY plgVersion		"2015.08.07.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Ubooquity.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
 	<!ENTITY controlMD5		"89faac4a70084b638454a9eccfad4282">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"a1c1d75018a146b1111b529b0d4c43f0">
+	<!ENTITY dependencyMD5	"02e190997b4c6f665aafc72a27509592">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"f468a7b31b53a1f3d69064fe5e3ffc37">
+	<!ENTITY dependencyMD564	"4385071493c3430e7721a663698bd654">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://vaemendis.net/ubooquity/static2/download">
 	<!ENTITY commonDIR		"/usr/local/PhAzE-Common">
