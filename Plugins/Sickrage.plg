@@ -1,22 +1,22 @@
 <?xml version='1.0' standalone='yes'?>
 
 <!DOCTYPE PLUGIN [
-	<!ENTITY name			"Ubooquity">
-	<!ENTITY displayName		"Ubooquity">
+	<!ENTITY name			"Sickrage">
+	<!ENTITY displayName		"SickRage">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
 	<!ENTITY plgVersion		"2015.09.06.1">
-	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Ubooquity.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
-	<!ENTITY controlMD5		"2eb48265bbf55fef526bf4360ab43106">
+	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickrage.plg">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
+	<!ENTITY controlMD5		"ad6962346a8ab8dbc9a7f461fa24d973">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
-	<!ENTITY dependencyMD5	"ac6c42a4c20c51cbc437b919c6ea4c4b">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
+	<!ENTITY dependencyMD5	"13f4dfa80faa51d5d77d2c9e98b7bd70">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
-	<!ENTITY dependencyMD564	"2f91b45a2628d32edfca31cf65a23264">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.4_x64.tar.gz">
+	<!ENTITY dependencyMD564	"034469d582a67c25365aa956381b9901">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"http://vaemendis.net/ubooquity/static2/download">
+	<!ENTITY appURL			"https://github.com/SiCKRAGETV/SickRage">
 ]>
 
 <PLUGIN
@@ -31,7 +31,7 @@
 Description
 =========================================================================
 
-This Plugin installs and controls Sick Beard for UnRaid.
+This Plugin installs and controls SickRage for UnRaid.
 All dependencies are installed as needed and everything is controllable from the webgui.
 
 =========================================================================
@@ -78,6 +78,23 @@ Version History
 2015.07.28.1
 ------------
 - Fixed glitch in updater that was messing up the entire OS on random occasions
+- Fixed link problem with Cheetah
+- Added new dependencies for Cheetah, now verified working properly
+
+2015.07.23.1
+------------
+- Fixed python symlinks for better performance and less errors
+- Added SSL root certificates for unRAID 5 users
+- Added missing dependencies for pyOpenSSL
+
+2015.07.01.1
+------------
+- Updated for unRAID 6 final to comply with changes in OS
+
+2015.05.03.1
+------------
+- Fixed remove script so it no longer shows an error on Unraid 5
+- Added change log to plugins page on Unraid GUI
 
 INITIAL RELEASE
 ---------------
@@ -97,25 +114,25 @@ INITIAL RELEASE
 List of files created by this plugin
 =========================================================================
 
-INSTALLED TO: /boot/config/plugins/Ubooquity
+INSTALLED TO: /boot/config/plugins/Sickrage
 
-Ubooquity.cfg					-> The config file used by the plugin
-Ubooquity-PhAzE-Control.tar.gz		-> This holds the plugin files
-Ubooquity-PhAzE-Dependency.tar.gz	-> This holds the plugins dependency files
+Sickrage.cfg					-> The config file used by the plugin
+Sickrage-PhAzE-Control.tar.gz		-> This holds the plugin files
+Sickrage-PhAzE-Dependency.tar.gz	-> This holds the plugins dependency files
 
 INSTALLED TO: /usr/local/emhttp/plugins/webGui
 
 PhAzE.page						-> This page points to the menu under the settings tab where the plugins are installed under
 icons/Phaze.png					-> This is the icon for the PhAzE Plugins menu
 
-INSTALLED TO: /usr/local/emhttp/plugins/Ubooquity
+INSTALLED TO: /usr/local/emhttp/plugins/Sickrage
 
-Ubooquity.page					-> This page points to the PHP file for the plugin GUI
-Ubooquity.png					-> This is the applications icon
+Sickrage.page					-> This page points to the PHP file for the plugin GUI
+Sickrage.png					-> This is the applications icon
 README.md						-> This is a text file that describes the application
 event/disks_mounted				-> Starts the application when the array is mounted
 event/unmounting_disks			-> Stops the application when the array is unmounted
-icons/ubooquity.png				-> This is an image used in the settings page
+icons/sickrage.png				-> This is an image used in the settings page
 icons/correct.png				-> This is an image used in the settings page
 icons/depends.png				-> This is an image used in the settings page
 icons/device_status.png			-> This is an icon used in the settings page
@@ -124,13 +141,13 @@ icons/locader.gif				-> This is an image used in the settings page
 icons/new_config.png				-> This is an icon used in the settings page
 icons/paypal.png				-> This is an image used in the settings page
 icons/warning.png				-> This is an image used in the settings page
-include/Ubooquity.php				-> This is the PHP page for the plugin settings GUI
-scripts/rc.Ubooquity				-> This is the control file. The one that starts, stops, and installs the application
-scripts/jquery.min.js				-> This is the JQuery JS file which is included in the PHP filestyles/Ubooquity5.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
-styles/Ubooquity5.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
-styles/Ubooquity6.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
+include/Sickrage.php				-> This is the PHP page for the plugin settings GUI
+scripts/rc.Sickrage				-> This is the control file. The one that starts, stops, and installs the application
+scripts/jquery.min.js				-> This is the JQuery JS file which is included in the PHP filestyles/Sickrage5.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
+styles/Sickrage5.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
+styles/Sickrage6.css				-> This is some added CSS to keep the look and feel of the plugins across unraid versions
 
-INSTALLED TO: /usr/local/PhAzE-Common/Ubooquity (Common directory location may differ)
+INSTALLED TO: /usr/local/PhAzE-Common/Sickrage (Common directory location may differ)
 
 startcfg.sh					-> This is a script that exports environment variables on app start, created on app install
 All dependency files 				-> These are binaries and apps that are required to run the application
@@ -183,8 +200,8 @@ app_logger() {
 # Setup plugin variables
 CTRLFILES="/boot/config/plugins/&name;/&controlFILE;"
 CFGFILE="/boot/config/plugins/&name;/&name;.cfg"
-OLDPNG="ubooquity.png"
-OLDNAME="ubooquity"
+OLDPNG="sickrage.png"
+OLDNAME="sickrage"
 
 app_logger "************************** " info log
 app_logger "Installing &name; plugin " info all
@@ -359,13 +376,12 @@ app_logger "Verifying plugin config file elements " info log
 [ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/config\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep LOGDIR` ] &amp;&amp; echo "LOGDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CACHEDIR` ] &amp;&amp; echo "CACHEDIR=\"\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep THEMEDIR` ] &amp;&amp; echo "THEMEDIR=\"\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep USESSL` ] &amp;&amp; echo "USESSL=\"no\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep JKSFILE` ] &amp;&amp; echo "JKSFILE=\"\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep JKSPW` ] &amp;&amp; echo "JKSPW=\"\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"2202\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8083\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep URLBASE` ] &amp;&amp; echo "URLBASE=\"\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep FORCEUPDATE` ] &amp;&amp; echo "FORCEUPDATE=\"no\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep BRANCH` ] &amp;&amp; echo "BRANCH=\"master\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep REPO` ] &amp;&amp; echo "REPO=\"&appURL;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
