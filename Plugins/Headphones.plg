@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Headphones">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.09.06.1">
+	<!ENTITY plgVersion		"2015.09.09.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Headphones.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
 	<!ENTITY controlMD5		"fe99e8326a54fad061bfedffba7b27f1">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.3_x86.tar.gz">
-	<!ENTITY dependencyMD5	"c93c92f4a4a49bf45ea0b266d1bd3708">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
+	<!ENTITY dependencyMD5	"d6086e58fd4e03bc60b19b59fa6d4cf3">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.3_x64.tar.gz">
-	<!ENTITY dependencyMD564	"5a21be61e601b621a5b05eb86e5f3bc0">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.4_x64.tar.gz">
+	<!ENTITY dependencyMD564	"51f280be9e192ad5f5591ca8333c6d39">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/rembo10/headphones">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2015.09.01.1
+------------
+- Added lameMP3 encoder to dependencies as it is light weight
 
 2015.09.01.1
 ------------
