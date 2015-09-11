@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"SickRage">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.09.06.1">
+	<!ENTITY plgVersion		"2015.09.11.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickrage.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"ad6962346a8ab8dbc9a7f461fa24d973">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"405eed9d1813717295c6f358124898a4">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
 	<!ENTITY dependencyMD5	"13f4dfa80faa51d5d77d2c9e98b7bd70">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2015.09.11.1
+------------
+- Removed force update option which SickRage does not use, and it was preventing the app from starting properly
 
 2015.09.01.1
 ------------
@@ -371,6 +375,7 @@ fi
 
 app_logger "Verifying plugin config file elements " info log
 
+[ `cat "$CFGFILE" | grep FORCEUPDATE` ] &amp;&amp; sed -i '/FORCEUPDATE.*/d' "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/config\"" &gt;&gt; "$CFGFILE"
@@ -379,7 +384,6 @@ app_logger "Verifying plugin config file elements " info log
 [ ! `cat "$CFGFILE" | grep USESSL` ] &amp;&amp; echo "USESSL=\"no\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"8083\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep URLBASE` ] &amp;&amp; echo "URLBASE=\"\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep FORCEUPDATE` ] &amp;&amp; echo "FORCEUPDATE=\"no\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep BRANCH` ] &amp;&amp; echo "BRANCH=\"master\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep REPO` ] &amp;&amp; echo "REPO=\"&appURL;\"" &gt;&gt; "$CFGFILE"
