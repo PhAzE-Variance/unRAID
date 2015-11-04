@@ -43,6 +43,16 @@ Version History
 ========================
 ####By: PhAzE
 
+2015.11.04.1
+------------
+- Fixed jQuery to check if loaded before loading itself in, this fixes stuck loader icon on settings page
+- Fixed libxslt dependency as previous version was made for a different glibc version, now uses native version
+- Updated pyOpenssl to 0.15 and added required dependencies
+
+2015.10.04.1
+------------
+- Updated certificates package to newer version
+
 2015.09.01.1
 ------------
 - V3 initial release
