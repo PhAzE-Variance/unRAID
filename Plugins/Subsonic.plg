@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Subsonic">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.10.04.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Subsonic.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"3ee0137a0ba8283b7dc9a6fd4e85f540">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"5b85263a39b0a3146d44614d08ed8f66">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
 	<!ENTITY dependencyMD5	"d2e2bd6d7004742ea4ac213f28690c6f">

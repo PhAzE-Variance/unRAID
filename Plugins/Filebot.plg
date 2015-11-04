@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"FileBot">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.09.06.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Filebot.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"25b2fc9e44deac83eb559766c8532089">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"f7ec5d6b63cb745f317b3e81aab9a970">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"1f79fb99d3cb76d7326aba867654f85c">

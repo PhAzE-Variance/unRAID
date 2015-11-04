@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"PlexConnect">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.10.04.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Plexconnect.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"23ac8cea950c6e00acc3ee0989420ee6">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"5f3398f0530c02cf6d057c2f37ee8be0">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
-	<!ENTITY dependencyMD5	"c208e0e42d630d3aeca5c5be8bbfa806">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
+	<!ENTITY dependencyMD5	"3d7bf03aa06f45e815321592aa6cc00b">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
-	<!ENTITY dependencyMD564	"a956ad0f9b7d4e648aa7d596a9bca236">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
+	<!ENTITY dependencyMD564	"cdfe48d17191cc5ce16de583f5a60db1">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/iBaa/PlexConnect">
 ]>

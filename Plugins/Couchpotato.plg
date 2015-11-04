@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"CouchPotato">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.10.04.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"6f59d7a0cd7ab1e159cdfb26c3ccdf5f">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"66cb62408b203b49bdde5d4617a5afab">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
-	<!ENTITY dependencyMD5	"25e737bb1261a4def4d374dbabef2fc1">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
+	<!ENTITY dependencyMD5	"dd91ffd98bdd9f60e72662ced6d78ef4">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.4_x64.tar.gz">
-	<!ENTITY dependencyMD564	"89fc90ce3e6adcd78ce14a0133db7e65">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
+	<!ENTITY dependencyMD564	"7fa47d2c48249556a7e10a366948b173">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/RuudBurger/CouchPotatoServer">
 ]>

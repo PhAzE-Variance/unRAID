@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Transmission">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.10.04.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Transmission.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"c61b6918aae39510fdf955b53e8a5de0">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"986706b8e26558c7856548bb233864d1">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
 	<!ENTITY dependencyMD5	"25cd7978b21d78cedf08bdb6cbe2534b">

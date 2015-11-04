@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"FlexGet">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.10.04.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Flexget.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"ec84b6f3e11a866588b9686ae7fd1199">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"3c7ed79b03afaba9a3dce9ba4d5b38f0">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
-	<!ENTITY dependencyMD5	"ca231ef541d925dd8156e17a7ce26bf9">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
+	<!ENTITY dependencyMD5	"4e9bcc62f913e67b4b27dbfc6a9645a3">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.4_x64.tar.gz">
-	<!ENTITY dependencyMD564	"edfa33a808a1001226226d05f04fa6ff">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
+	<!ENTITY dependencyMD564	"dc1d3bd975f03b89117b02c7faa4451c">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY pipFILE		"&name;-PhAzE-pip-1.0.tar.gz">
 	<!ENTITY pipMD5			"475a2d649c31bc92e534a78b730ad3e7">

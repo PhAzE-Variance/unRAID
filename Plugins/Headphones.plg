@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Headphones">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.10.04.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Headphones.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"fe99e8326a54fad061bfedffba7b27f1">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"438487629915c4b55b8f90f833513aa2">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
-	<!ENTITY dependencyMD5	"ec58c55202812295bab59115f137de19">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
+	<!ENTITY dependencyMD5	"d37044eb351c07f60e7d6e8f0fca2918">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
-	<!ENTITY dependencyMD564	"c6d774a30152751f6c943aed433f0603">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
+	<!ENTITY dependencyMD564	"56156c302f94d902f289584433c2011f">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/rembo10/headphones">
 ]>

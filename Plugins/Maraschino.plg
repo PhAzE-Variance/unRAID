@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Maraschino">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.10.04.1">
+	<!ENTITY plgVersion		"2015.11.04.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Maraschino.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"c9db40b83c606a4854494e026caaccce">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"5ca8677dd736fdb94ddac5f7e44ae2c8">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
-	<!ENTITY dependencyMD5	"47f1f9c4d905ae1a91f9535016faf964">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
+	<!ENTITY dependencyMD5	"f014f35515c1bbc310ae70f708927717">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.4_x64.tar.gz">
-	<!ENTITY dependencyMD564	"f04178a42de6c86a5f765d586d87e1b5">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
+	<!ENTITY dependencyMD564	"8f3e289ff97e68b699449ce9c62d3276">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/mrkipling/maraschino">
 ]>
