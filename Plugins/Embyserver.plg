@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Emby Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.25.1">
+	<!ENTITY plgVersion		"2015.11.25.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
-	<!ENTITY controlMD5		"c63be7016d8d1ebfb881f112db898730">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
+	<!ENTITY controlMD5		"06e3695876fd10a96e55a773e2c74c7d">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
 	<!ENTITY dependencyMD5	"0c1c4ef953531f2297eee5934d0204dc">
@@ -48,6 +48,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2015.11.25.1
+------------
+- Fixed FFMPEG to use plugin version rather than Emby supplied version to fix video playback
 
 2015.11.25.1
 ------------
