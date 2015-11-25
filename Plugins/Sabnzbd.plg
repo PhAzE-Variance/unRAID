@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"SABnzbd">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.04.1">
+	<!ENTITY plgVersion		"2015.11.25.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
 	<!ENTITY controlMD5		"2795d7c42aa90957260ecc4d0f4cf7c8">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
-	<!ENTITY dependencyMD5	"f5d092e041edbf08e3d2a023f6ef26b5">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
+	<!ENTITY dependencyMD5	"f4ccb82d092bc90090c597553fa7e28e">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
-	<!ENTITY dependencyMD564	"971d92b59152bc725892d8ad62726034">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.7_x64.tar.gz">
+	<!ENTITY dependencyMD564	"a6587b9cb56091afece5f2935f7d2dcb">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://downloads.sourceforge.net/project/sabnzbdplus">
 ]>
