@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Sonarr">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.04.1">
+	<!ENTITY plgVersion		"2015.12.19.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sonarr.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
-	<!ENTITY controlMD5		"f4f7d15fbd8aeb6ccdf10d23e9a55284">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
+	<!ENTITY controlMD5		"230baff77961551ee189f738ac3c169b">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.1_x86.tar.gz">
 	<!ENTITY dependencyMD5	"dbda539faafdfa664f333a9ac93f73e0">
@@ -16,7 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.1_x64.tar.gz">
 	<!ENTITY dependencyMD564	"8825dc346e1bfed8235eaf56c5098cee">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"http://update.nzbdrone.com/v2">
+	<!ENTITY appURL			"http://update.sonarr.tv/v2">
 	<!ENTITY monoFILE		"Mono-PhAzE-3.8_x86.txz">
 	<!ENTITY monoMD5		"210a94784850c9069df2ee4dd3fac30c">
 	<!ENTITY monoURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&monoFILE;">
@@ -450,6 +450,7 @@ app_logger "Verifying plugin config file elements " info log
 # Force update REPO if it has changed from old plugin versions but only if old one was found
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "http://update.nzbdrone.com/repos/apt/debian" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+[ "$TESTREPO" == "http://update.nzbdrone.com/v2" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 app_logger "Verification OK! " info log
 
