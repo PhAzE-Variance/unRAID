@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"SABnzbd">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.12.19.2">
+	<!ENTITY plgVersion		"2015.12.24.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
-	<!ENTITY controlMD5		"e68deb2c98e874514858b413082f0c06">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
+	<!ENTITY controlMD5		"e9cf2345ea0cf5f150ab232be35c5a3e">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
 	<!ENTITY dependencyMD5	"f4ccb82d092bc90090c597553fa7e28e">
