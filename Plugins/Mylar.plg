@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Mylar">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.04.1">
+	<!ENTITY plgVersion		"2016.01.22.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Mylar.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
-	<!ENTITY controlMD5		"ec6e3f31108f9584e21432f783b8851e">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
+	<!ENTITY controlMD5		"8112d8a30d24ebd39821d0543cb48550">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
 	<!ENTITY dependencyMD5	"d17b9d0c25bf59409e8529bd9993661b">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.01.22.1
+------------
+- Fixed error returning to /root when git cloning the install files
 
 2015.11.04.1
 ------------
