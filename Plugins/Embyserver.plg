@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Emby Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.25.2">
+	<!ENTITY plgVersion		"2016.01.23.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
-	<!ENTITY controlMD5		"06e3695876fd10a96e55a773e2c74c7d">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.6.tar.gz">
+	<!ENTITY controlMD5		"39ab872596f9d45ee38bfabfb125581a">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
 	<!ENTITY dependencyMD5	"0c1c4ef953531f2297eee5934d0204dc">
@@ -16,7 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
 	<!ENTITY dependencyMD564	"b07f5a0a67ebcd8e6eb9591f69427893">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"https://github.com/MediaBrowser">
+	<!ENTITY appURL			"https://github.com/MediaBrowser/Emby/releases">
 	<!ENTITY monoFILE		"Mono-PhAzE-3.8_x86.txz">
 	<!ENTITY monoMD5		"210a94784850c9069df2ee4dd3fac30c">
 	<!ENTITY monoURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&monoFILE;">
@@ -48,6 +48,15 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.01.23.1
+------------
+- Updated version check to use latest version tag from git preventing accidentally getting beta or dev versions
+
+2016.01.22.1
+------------
+- Removed BETA option as they no longer provide precompiled beta releases, only stable releases now
+- Updated version check URL and download URL to new github layout they have provided
 
 2015.11.25.1
 ------------
@@ -498,6 +507,8 @@ app_logger "Verifying plugin config file elements " info log
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 [ "$TESTREPO" == "https://github.com/MediaBrowser/MediaBrowser" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+[ "$TESTREPO" == "https://github.com/MediaBrowser" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+sed -i "s!BETA=\".*\"!BETA=\"no\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 app_logger "Verification OK! " info log
 
