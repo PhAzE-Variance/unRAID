@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"SickRage">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.01.22.1">
+	<!ENTITY plgVersion		"2016.01.23.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickrage.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
-	<!ENTITY controlMD5		"ba3a57004da714d7d82b78f29a964e05">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
+	<!ENTITY controlMD5		"ce68685e7c4261966d5cdfca64875222">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
 	<!ENTITY dependencyMD5	"11494b7a55d5a29ed359c3d6ea095096">
@@ -16,7 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.7_x64.tar.gz">
 	<!ENTITY dependencyMD564	"ea5898b65fd81286861920921327d1b2">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"https://github.com/SiCKRAGETV/SickRage">
+	<!ENTITY appURL			"https://github.com/SickRage/SickRage">
 ]>
 
 <PLUGIN
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.01.23.1
+------------
+- Changed repo to new repo, which is updated more frequently
 
 2016.01.22.1
 ------------
@@ -408,6 +412,7 @@ app_logger "Verifying plugin config file elements " info log
 # Force update REPO if it has changed from old plugin versions but only if old one was found
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+[ "$TESTREPO" == "https://github.com/SiCKRAGETV/SickRage" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 app_logger "Verification OK! " info log
 
