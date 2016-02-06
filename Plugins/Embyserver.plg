@@ -58,7 +58,7 @@ Version History
 - Removed BETA option as they no longer provide precompiled beta releases, only stable releases now
 - Updated version check URL and download URL to new github layout they have provided
 
-2015.11.25.1
+2015.12.23.1
 ------------
 - Fixed FFMPEG to use plugin version rather than Emby supplied version to fix video playback
 

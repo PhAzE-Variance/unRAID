@@ -43,7 +43,7 @@ Version History
 ========================
 ####By: PhAzE
 
-2015.11.04.1
+2015.11.16.2
 ------------
 - Fixed password which was saving the surrounding single quotes when passed from the web GUI
 
