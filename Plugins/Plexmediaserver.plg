@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Plex Media Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.16.2">
+	<!ENTITY plgVersion		"2016.03.02.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Plexmediaserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
-	<!ENTITY controlMD5		"9a011a136831ca3a3ed5db8258b0d168">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
+	<!ENTITY controlMD5		"6e8bc60e3ccc56cfada5429f40488975">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
@@ -43,7 +43,12 @@ Version History
 ========================
 ####By: PhAzE
 
-2015.11.16.2
+2016.03.02.1
+------------
+- Updated login method to use URL encoding
+- Updated php script to pass vars URL encoded also, this should help with complex passwords
+
+2015.11.04.1
 ------------
 - Fixed password which was saving the surrounding single quotes when passed from the web GUI
 
