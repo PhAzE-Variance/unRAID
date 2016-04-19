@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"SABnzbd">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.12.24.1">
+	<!ENTITY plgVersion		"2016.04.19.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
-	<!ENTITY controlMD5		"e9cf2345ea0cf5f150ab232be35c5a3e">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.6.tar.gz">
+	<!ENTITY controlMD5		"4c9ecf227317f0096b5bf91f1bbd9985">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
 	<!ENTITY dependencyMD5	"f4ccb82d092bc90090c597553fa7e28e">
@@ -16,7 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.7_x64.tar.gz">
 	<!ENTITY dependencyMD564	"a6587b9cb56091afece5f2935f7d2dcb">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"http://downloads.sourceforge.net/project/sabnzbdplus">
+	<!ENTITY appURL			"https://github.com/sabnzbd/sabnzbd/releases/download">
 ]>
 
 <PLUGIN
@@ -42,6 +42,11 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.04.19.1
+------------
+- Updated URL for download and new version check to use github instead of sourceforge
+- Fixed downloads to include not only beta but RC if one is available
 
 2015.11.04.1
 ------------
@@ -402,6 +407,8 @@ app_logger "Verifying plugin config file elements " info log
 # Force update REPO if it has changed from old plugin versions but only if old one was found
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+[ "$TESTREPO" == "http://downloads.sourceforge.net/project/sabnzbdplus" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+
 sed -i 's!\r!!g' "$CFGFILE"
 app_logger "Verification OK! " info log
 
