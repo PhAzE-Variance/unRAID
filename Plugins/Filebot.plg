@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"FileBot">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.04.1">
+	<!ENTITY plgVersion		"2016.04.20.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Filebot.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
-	<!ENTITY controlMD5		"f7ec5d6b63cb745f317b3e81aab9a970">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
+	<!ENTITY controlMD5		"c511a21e4d5a30db55d61daf2e808b64">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"1f79fb99d3cb76d7326aba867654f85c">
@@ -42,6 +42,11 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.04.20.1
+------------
+- Updated POST to use urlencode and urldecode
+- Updated shortcut script to skip sudo if user does not have sudo access
 
 2015.11.04.1
 ------------
