@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"FlexGet">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.25.1">
+	<!ENTITY plgVersion		"2016.04.20.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Flexget.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
-	<!ENTITY controlMD5		"4edc50fee5d3755ab937ae6ce1c1dfdd">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
+	<!ENTITY controlMD5		"ab35439b82b775dc864d8f8057c516d1">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4e9bcc62f913e67b4b27dbfc6a9645a3">
@@ -16,8 +16,8 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
 	<!ENTITY dependencyMD564	"dc1d3bd975f03b89117b02c7faa4451c">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY pipFILE		"&name;-PhAzE-pip-1.0.tar.gz">
-	<!ENTITY pipMD5			"475a2d649c31bc92e534a78b730ad3e7">
+	<!ENTITY pipFILE		"&name;-PhAzE-pip-1.1.tar.gz">
+	<!ENTITY pipMD5			"e14d863d01ff9246e767c569797a8223">
 	<!ENTITY pipURL			"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&pipFILE;">
 ]>
 
@@ -44,6 +44,17 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+2016.04.20.1
+------------
+- Added api autoh token to config page
+- Added button to generate new api auth token
+- Added option for using web interface and daemonizing the program
+- Added option to turn off api
+- Updated install function to use new pip file names for FlexGet
+- Updated plugin for use with new web interface
+- Updated application switches
+- Updated ability to set web interface password
+- Updated PIP to version 8.1.1
 
 2015.11.04.1
 ------------
@@ -425,13 +436,15 @@ fi
 
 app_logger "Verifying plugin config file elements " info log
 
+[ `cat "$CFGFILE" | grep INSTALLDIR=` ] &amp;&amp; sed -i '/INSTALLDIR=.*/d' "$CFGFILE"
+[ `cat "$CFGFILE" | grep USERNAME=` ] &amp;&amp; sed -i '/USERNAME=.*/d' "$CFGFILE"
+[ `cat "$CFGFILE" | grep LOGDIR=` ] &amp;&amp; sed -i '/LOGDIR=.*/d' "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep SERVICE` ] &amp;&amp; echo "SERVICE=\"disable\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep INSTALLDIR` ] &amp;&amp; echo "INSTALLDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;/config\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep LOGDIR` ] &amp;&amp; echo "LOGDIR=\"\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"5051\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep USERNAME` ] &amp;&amp; echo "USERNAME=\"flexget\"" &gt;&gt; "$CFGFILE"
-[ ! `cat "$CFGFILE" | grep PASSWORD` ] &amp;&amp; echo "PASSWORD=\"flexget\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep CONFIGDIR` ] &amp;&amp; echo "CONFIGDIR=\"/usr/local/&name;\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep USEWEB` ] &amp;&amp; echo "USEWEB=\"yes\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep USEAPI` ] &amp;&amp; echo "USEAPI=\"yes\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep ^PORT` ] &amp;&amp; echo "PORT=\"3539\"" &gt;&gt; "$CFGFILE"
+[ ! `cat "$CFGFILE" | grep PASSWORD` ] &amp;&amp; echo "PASSWORD=\"Password123\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep RUNAS` ] &amp;&amp; echo "RUNAS=\"nobody\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_STORAGESIZE` ] &amp;&amp; echo "PLG_STORAGESIZE=\"yes\"" &gt;&gt; "$CFGFILE"
 [ ! `cat "$CFGFILE" | grep PLG_DATACHECK` ] &amp;&amp; echo "PLG_DATACHECK=\"yes\"" &gt;&gt; "$CFGFILE"
@@ -548,6 +561,12 @@ if [ "x86_64" == "$ARCHTYPE" ]; then
 	COMMONCHECK=""
 	[ -f "/usr/local/emhttp/plugins/&name;/scripts/rc.&name;" ] &amp;&amp; COMMONCHECK=`/usr/local/emhttp/plugins/&name;/scripts/rc.&name; checkcache`
 	[ "$COMMONCHECK" == "true" ] &amp;&amp; PHAZECOMMON="/mnt/cache/.PhAzE-Common"
+
+	# PIP uninstall the application
+	if [ -e "${PHAZECOMMON}/usr/bin/flexget" ] &amp;&amp; [ -e "${PHAZECOMMON}/usr/bin/pip" ]; then
+		/bin/bash -c ". ${PHAZECOMMON}/&name;/startcfg.sh; pip uninstall -y -q flexget" >/dev/null 2>&amp;1
+		/bin/bash -c ". ${PHAZECOMMON}/&name;/startcfg.sh; pip uninstall -y -q transmissionrpc" >/dev/null 2>&amp;1
+	fi
 
 	# Remove all files and directories pertaining to this plugin
 	[ -d "${PHAZECOMMON}/&name;" ] &amp;&amp; rm -fR "${PHAZECOMMON}/&name;"
