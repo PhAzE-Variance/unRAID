@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"FlexGet">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.04.20.1">
+	<!ENTITY plgVersion		"2016.05.03.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Flexget.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
-	<!ENTITY controlMD5		"ab35439b82b775dc864d8f8057c516d1">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
+	<!ENTITY controlMD5		"3a6d0250934159ea35452f91555df36f">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
 	<!ENTITY dependencyMD5	"4e9bcc62f913e67b4b27dbfc6a9645a3">

@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Plex Media Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.03.02.1">
+	<!ENTITY plgVersion		"2016.05.03.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Plexmediaserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
-	<!ENTITY controlMD5		"6e8bc60e3ccc56cfada5429f40488975">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.6.tar.gz">
+	<!ENTITY controlMD5		"55015892c88eac0e61af978a1e35b774">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
