@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"GoDaddy DDNS">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.05.04.1">
+	<!ENTITY plgVersion		"2016.05.20.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Godaddy_ddns.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
-	<!ENTITY controlMD5		"bd6d9840ddd0629a41e19e681fde3c36">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
+	<!ENTITY controlMD5		"b179644c71a684263fa2ed4673de05a1">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"97a371d7cd18bcf828eced4790655d23">
@@ -45,6 +45,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+INITIAL RELEASE
+---------------
+- Fixed crontab to run hourly instead of every minute of the hour
 
 INITIAL RELEASE
 ---------------
