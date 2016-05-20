@@ -42,6 +42,9 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+2016.05.03.1
+------------
+- Removed url encode and decode as they broke settings page
 
 2016.04.20.1
 ------------

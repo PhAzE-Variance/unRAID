@@ -44,9 +44,13 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+2016.05.03.1
+------------
+- Removed URL encode and decode because they broke settings page
+
 2016.04.20.1
 ------------
-- Added api autoh token to config page
+- Added api auth token to config page
 - Added button to generate new api auth token
 - Added option for using web interface and daemonizing the program
 - Added option to turn off api
