@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Emby Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.05.03.1">
+	<!ENTITY plgVersion		"2016.05.20.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.8.tar.gz">
 	<!ENTITY controlMD5		"c06ca2783b71c2ed64a99d2fd27a635d">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
-	<!ENTITY dependencyMD5	"0c1c4ef953531f2297eee5934d0204dc">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
+	<!ENTITY dependencyMD5	"743e52946000ce24da5ef9c3cbb12591">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
-	<!ENTITY dependencyMD564	"b07f5a0a67ebcd8e6eb9591f69427893">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.7_x64.tar.gz">
+	<!ENTITY dependencyMD564	"41efcbd20fe58cfcaeb06e5d98269d16">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/MediaBrowser/Emby/releases">
 	<!ENTITY monoFILE		"Mono-PhAzE-4.2.3.4_x86.txz">
@@ -48,6 +48,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.04.21.1
+------------
+- Added missing dependency for mediainfo for Unraid 6.2 beta
 
 2016.04.21.1
 ------------
