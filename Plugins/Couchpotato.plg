@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"CouchPotato">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.01.22.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
 	<!ENTITY controlMD5		"3a1e29b7d0f4f728d30607eeb884d671">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
-	<!ENTITY dependencyMD5	"dd91ffd98bdd9f60e72662ced6d78ef4">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
+	<!ENTITY dependencyMD5	"139006029fe1210d9cdcce62a0e8ddab">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
-	<!ENTITY dependencyMD564	"7fa47d2c48249556a7e10a366948b173">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
+	<!ENTITY dependencyMD564	"f6cbd0d21f472ff598083693d5fe6d87">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/RuudBurger/CouchPotatoServer">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.16.1
+------------
+- Updated curl dependency for Unraid 6.2 Beta
 
 2016.01.22.1
 ------------

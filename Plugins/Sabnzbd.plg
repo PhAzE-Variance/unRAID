@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"SABnzbd">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.04.19.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.6.tar.gz">
 	<!ENTITY controlMD5		"4c9ecf227317f0096b5bf91f1bbd9985">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
-	<!ENTITY dependencyMD5	"f4ccb82d092bc90090c597553fa7e28e">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.8_x86.tar.gz">
+	<!ENTITY dependencyMD5	"918b9d1981c4024e95427fccdaac0201">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.7_x64.tar.gz">
-	<!ENTITY dependencyMD564	"a6587b9cb56091afece5f2935f7d2dcb">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.8_x64.tar.gz">
+	<!ENTITY dependencyMD564	"f6b5826f7b34c85bdeb381a8b45ab477">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/sabnzbd/sabnzbd/releases/download">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.16.1
+------------
+- Added missing dependency for Unraid 6.2 Beta
 
 2016.04.19.1
 ------------

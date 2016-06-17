@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Maraschino">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.01.22.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Maraschino.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
 	<!ENTITY controlMD5		"fb806d0a929cf3a3f5a88c129c44dd1c">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
-	<!ENTITY dependencyMD5	"f014f35515c1bbc310ae70f708927717">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
+	<!ENTITY dependencyMD5	"8d58dd8eec071d998a77e0cf5d6d1997">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
-	<!ENTITY dependencyMD564	"8f3e289ff97e68b699449ce9c62d3276">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
+	<!ENTITY dependencyMD564	"70bd0d44ad98253fce5e33216ed4b726">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/mrkipling/maraschino">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.16.1
+------------
+- Updated curl dependency for Unraid 6.2 Beta
 
 2016.01.22.1
 ------------

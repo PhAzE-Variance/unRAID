@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"PlexConnect">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.01.22.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Plexconnect.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
 	<!ENTITY controlMD5		"39f479aad892b3d2c0dc6e63f2e30e9e">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
-	<!ENTITY dependencyMD5	"3d7bf03aa06f45e815321592aa6cc00b">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
+	<!ENTITY dependencyMD5	"5b562d260849eae665bcedc68f85d585">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
-	<!ENTITY dependencyMD564	"cdfe48d17191cc5ce16de583f5a60db1">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.7_x64.tar.gz">
+	<!ENTITY dependencyMD564	"0253fcd7fd846ce6c172a55fcd2fcbfe">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/iBaa/PlexConnect">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.16.1
+------------
+- Updated curl dependency for Unraid 6.2 Beta
 
 2016.01.22.1
 ------------

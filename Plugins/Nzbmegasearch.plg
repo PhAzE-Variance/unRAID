@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"NZBmegasearcH">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.01.22.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Nzbmegasearch.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
 	<!ENTITY controlMD5		"45660808a1b7b16705c9acd278b2c242">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
-	<!ENTITY dependencyMD5	"6335c38099cab157a9820b32f63dc98f">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
+	<!ENTITY dependencyMD5	"b33dda8682635f3ad456cc6ea3688be8">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
-	<!ENTITY dependencyMD564	"48f108ba0ff3fef44b58efd01089ffbe">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
+	<!ENTITY dependencyMD564	"df29d12e5620a963dbf017e145b25027">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/pillone/usntssearch">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.16.1
+------------
+- Updated curl dependency for Unraid 6.2 Beta
 
 2016.01.22.1
 ------------

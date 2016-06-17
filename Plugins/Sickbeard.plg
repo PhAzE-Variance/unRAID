@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Sick Beard">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.01.22.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickbeard.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
 	<!ENTITY controlMD5		"4bcbb720325c2f5fc6f4863a7299c22b">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
-	<!ENTITY dependencyMD5	"ebc5072a3c51921d2b4485a4a54dde9d">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
+	<!ENTITY dependencyMD5	"6a61db92a0cbab2d558bfbb9ba19909a">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.6_x64.tar.gz">
-	<!ENTITY dependencyMD564	"50f0498e920b741e734475e04b76ccd1">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.7_x64.tar.gz">
+	<!ENTITY dependencyMD564	"372e9df308b66541399a0ccfcf1029bb">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/midgetspy/Sick-Beard">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.16.1
+------------
+- Updated curl dependency for Unraid 6.2 Beta
 
 2016.01.22.1
 ------------

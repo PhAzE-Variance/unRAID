@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Transmission">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.04.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Transmission.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
 	<!ENTITY controlMD5		"986706b8e26558c7856548bb233864d1">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.4_x86.tar.gz">
-	<!ENTITY dependencyMD5	"25cd7978b21d78cedf08bdb6cbe2534b">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.5_x86.tar.gz">
+	<!ENTITY dependencyMD5	"a7882da87bed90d459b9bb1c16e50fe3">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.4_x64.tar.gz">
-	<!ENTITY dependencyMD564	"6a3a27186d3919109a1df589287fc2ba">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.5_x64.tar.gz">
+	<!ENTITY dependencyMD564	"5afda1178b4f255ee3bcd03395247344">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://slackware.org.uk/slacky">
 ]>
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.16.1
+------------
+- Added missing depenendcy SASL for Unraid 6.2 beta
 
 2015.11.04.1
 ------------

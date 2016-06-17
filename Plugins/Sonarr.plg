@@ -5,16 +5,16 @@
 	<!ENTITY displayName		"Sonarr">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.05.03.1">
+	<!ENTITY plgVersion		"2016.06.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sonarr.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
 	<!ENTITY controlMD5		"fa6b36d493bea3d13a514332f9896165">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
-	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.1_x86.tar.gz">
-	<!ENTITY dependencyMD5	"dbda539faafdfa664f333a9ac93f73e0">
+	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
+	<!ENTITY dependencyMD5	"ea09a500137e15c20ffd637cbac17af3">
 	<!ENTITY dependencyURL	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE;">
-	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.1_x64.tar.gz">
-	<!ENTITY dependencyMD564	"8825dc346e1bfed8235eaf56c5098cee">
+	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.2_x64.tar.gz">
+	<!ENTITY dependencyMD564	"85d00712346aa4c61f602bf469fe7f65">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"http://update.sonarr.tv/v2">
 	<!ENTITY monoFILE		"Mono-PhAzE-4.2.3.4_x86.txz">
@@ -48,9 +48,11 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
-2016.05.03.1
+
+2016.06.16.1
 ------------
-- Removed URL encode and decode as they broke the settings page
+- Added SASL dependency for MediaInfo on Unraid 6.2 Beta
+- Added libx11, libxcb, libxau, libxdmcp dependencies
 
 2016.04.21.1
 ------------
