@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Plex Media Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.05.20.1">
+	<!ENTITY plgVersion		"2016.06.28.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Plexmediaserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.7.tar.gz">
-	<!ENTITY controlMD5		"b3132fa38b101c81582206e00a0f9cde">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.8.tar.gz">
+	<!ENTITY controlMD5		"c2a6b0f482e1f81d691498baaa518247">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
@@ -16,7 +16,7 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.0_x64.tar.gz">
 	<!ENTITY dependencyMD564	"">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY appURL			"https://plex.tv/downloads">
+	<!ENTITY appURL			"https://plex.tv">
 ]>
 
 <PLUGIN
@@ -42,6 +42,13 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.06.28.1
+------------
+- Updated plugin for new web page layout
+- Updated plugin for new login method
+- Updated repo url
+- Fixed random 'sign_in' files from being saved
 
 2016.05.20.1
 ------------
@@ -411,6 +418,7 @@ app_logger "Verifying plugin config file elements " info log
 # Force update REPO if it has changed from old plugin versions but only if old one was found
 TESTREPO=`cat "$CFGFILE" | grep 'REPO=' | sed -n 's!REPO="\(.*\)"!\1!p'`
 [ "$TESTREPO" == "" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
+[ "$TESTREPO" == "https://plex.tv/downloads" ] &amp;&amp; sed -i "s!REPO=\".*\"!REPO=\"&appURL;\"!g" "$CFGFILE"
 sed -i 's!\r!!g' "$CFGFILE"
 app_logger "Verification OK! " info log
 
