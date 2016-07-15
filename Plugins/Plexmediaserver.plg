@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Plex Media Server">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.06.28.1">
+	<!ENTITY plgVersion		"2016.07.15.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Plexmediaserver.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.8.tar.gz">
-	<!ENTITY controlMD5		"c2a6b0f482e1f81d691498baaa518247">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.9.tar.gz">
+	<!ENTITY controlMD5		"6bc7e8be31836d84e0102bb72bf8cc93">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.07.15.1
+------------
+- Updated plex pass version check to acquire proper version using auth token from sign in
 
 2016.06.28.1
 ------------
