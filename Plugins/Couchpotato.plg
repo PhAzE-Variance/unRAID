@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"CouchPotato">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.06.16.1">
+	<!ENTITY plgVersion		"2016.09.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Couchpotato.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
-	<!ENTITY controlMD5		"3a1e29b7d0f4f728d30607eeb884d671">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
+	<!ENTITY controlMD5		"3dc32b3f554cab9c120f8871a257c75f">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
 	<!ENTITY dependencyMD5	"139006029fe1210d9cdcce62a0e8ddab">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.16.1
+------------
+- Updated how branch field is grabbed from github
 
 2016.06.16.1
 ------------

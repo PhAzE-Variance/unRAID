@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Mylar">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.06.16.1">
+	<!ENTITY plgVersion		"2016.09.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Mylar.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
-	<!ENTITY controlMD5		"8112d8a30d24ebd39821d0543cb48550">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
+	<!ENTITY controlMD5		"9b530f28443ca81baf9f407607489657">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
 	<!ENTITY dependencyMD5	"3517e369d7b81dce92929a6719ed89bd">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.16.1
+------------
+- Updated how branch field is grabbed from github
 
 2016.06.16.1
 ------------

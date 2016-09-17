@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Headphones">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.06.16.1">
+	<!ENTITY plgVersion		"2016.09.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Headphones.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
-	<!ENTITY controlMD5		"8680261490ec997d454bc044fe7cf1e0">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
+	<!ENTITY controlMD5		"0078d3e7605ac7cd410c9a58a138db16">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
 	<!ENTITY dependencyMD5	"e2bfa5ea9477db421883fc4ec3ad219e">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.16.1
+------------
+- Updated how branch field is grabbed from github
 
 2016.06.16.1
 ------------

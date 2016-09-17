@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"Sick Beard">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.06.16.1">
+	<!ENTITY plgVersion		"2016.09.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickbeard.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
-	<!ENTITY controlMD5		"4bcbb720325c2f5fc6f4863a7299c22b">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
+	<!ENTITY controlMD5		"035aa2acf0ebc44e0323fbbf6658830c">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.7_x86.tar.gz">
 	<!ENTITY dependencyMD5	"6a61db92a0cbab2d558bfbb9ba19909a">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.16.1
+------------
+- Updated how branch field is grabbed from github
 
 2016.06.16.1
 ------------

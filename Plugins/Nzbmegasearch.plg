@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"NZBmegasearcH">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.06.16.1">
+	<!ENTITY plgVersion		"2016.09.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Nzbmegasearch.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
-	<!ENTITY controlMD5		"45660808a1b7b16705c9acd278b2c242">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
+	<!ENTITY controlMD5		"ba9ec40b195c1e44ed5191841344951b">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.6_x86.tar.gz">
 	<!ENTITY dependencyMD5	"b33dda8682635f3ad456cc6ea3688be8">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.16.1
+------------
+- Updated how branch field is grabbed from github
 
 2016.06.16.1
 ------------

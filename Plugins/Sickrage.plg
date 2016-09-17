@@ -5,10 +5,10 @@
 	<!ENTITY displayName		"SickRage">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.06.16.1">
+	<!ENTITY plgVersion		"2016.09.16.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickrage.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
-	<!ENTITY controlMD5		"ce68685e7c4261966d5cdfca64875222">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.6.tar.gz">
+	<!ENTITY controlMD5		"c9f7d5ae15eb39408e963f8073983feb">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.8_x86.tar.gz">
 	<!ENTITY dependencyMD5	"300da0930421ab73652157c9adb4292a">
@@ -42,6 +42,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.16.1
+------------
+- Updated how branch field is grabbed from github
 
 2016.06.16.1
 ------------
