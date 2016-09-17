@@ -3,9 +3,10 @@
 <!DOCTYPE PLUGIN [
 	<!ENTITY name			"Godaddy_ddns">
 	<!ENTITY displayName		"GoDaddy DDNS">
+	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.05.20.1">
+	<!ENTITY plgVersion		"2016.09.17.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Godaddy_ddns.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.1.tar.gz">
 	<!ENTITY controlMD5		"b179644c71a684263fa2ed4673de05a1">
@@ -26,6 +27,7 @@
 	name="&name;"
 	author="&author;"
 	version="&plgVersion;"
+	launch="&launch;"
 	pluginURL="&pluginURL;"
 >
 
@@ -45,6 +47,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.17.1
+------------
+- Added shortcut from plugins menu to plugin settings page
 
 INITIAL RELEASE
 ---------------

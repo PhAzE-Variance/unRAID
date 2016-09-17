@@ -3,9 +3,10 @@
 <!DOCTYPE PLUGIN [
 	<!ENTITY name			"Sickrage">
 	<!ENTITY displayName		"SickRage">
+	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.09.16.1">
+	<!ENTITY plgVersion		"2016.09.17.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sickrage.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.6.tar.gz">
 	<!ENTITY controlMD5		"c9f7d5ae15eb39408e963f8073983feb">
@@ -23,6 +24,7 @@
 	name="&name;"
 	author="&author;"
 	version="&plgVersion;"
+	launch="&launch;"
 	pluginURL="&pluginURL;"
 >
 
@@ -42,6 +44,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.17.1
+------------
+- Added shortcut from plugins menu to plugin settings page
 
 2016.09.16.1
 ------------

@@ -3,9 +3,10 @@
 <!DOCTYPE PLUGIN [
 	<!ENTITY name			"Ubooquity">
 	<!ENTITY displayName		"Ubooquity">
+	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2015.11.04.1">
+	<!ENTITY plgVersion		"2016.09.17.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Ubooquity.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
 	<!ENTITY controlMD5		"fe38d8568818d2377b93da53d7979203">
@@ -23,6 +24,7 @@
 	name="&name;"
 	author="&author;"
 	version="&plgVersion;"
+	launch="&launch;"
 	pluginURL="&pluginURL;"
 >
 
@@ -42,6 +44,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.09.17.1
+------------
+- Added shortcut from plugins menu to plugin settings page
 
 2015.11.04.1
 ------------

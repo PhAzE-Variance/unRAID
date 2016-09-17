@@ -3,9 +3,10 @@
 <!DOCTYPE PLUGIN [
 	<!ENTITY name			"Resilio">
 	<!ENTITY displayName		"Resilio">
+	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.09.16.1">
+	<!ENTITY plgVersion		"2016.09.17.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Resilio.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.0.tar.gz">
 	<!ENTITY controlMD5		"db7597e3d56a59f308c539ba24ea6d27">
@@ -23,6 +24,7 @@
 	name="&name;"
 	author="&author;"
 	version="&plgVersion;"
+	launch="&launch;"
 	pluginURL="&pluginURL;"
 >
 
@@ -43,9 +45,14 @@ Version History
 ========================
 ####By: PhAzE
 
+2016.09.17.1
+------------
+- Added shortcut from plugins menu to plugin settings page
+
 2016.09.16.1
 ------------
 - Updated app executable name in rc and php files to reflect new name
+- Renamed Btsync plugin to Resilio since the program was rebranded
 
 2016.07.11.1
 ------------

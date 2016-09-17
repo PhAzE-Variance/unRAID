@@ -3,9 +3,10 @@
 <!DOCTYPE PLUGIN [
 	<!ENTITY name			"Filebot">
 	<!ENTITY displayName		"FileBot">
+	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.05.03.1">
+	<!ENTITY plgVersion		"2016.09.17.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Filebot.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
 	<!ENTITY controlMD5		"a301eedd1116124fa0148d89544a7e38">
@@ -23,6 +24,7 @@
 	name="&name;"
 	author="&author;"
 	version="&plgVersion;"
+	launch="&launch;"
 	pluginURL="&pluginURL;"
 >
 
@@ -42,9 +44,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
-2016.05.03.1
+
+2016.09.17.1
 ------------
-- Removed url encode and decode as they broke settings page
+- Added shortcut from plugins menu to plugin settings page
 
 2016.04.20.1
 ------------
