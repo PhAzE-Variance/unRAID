@@ -6,10 +6,10 @@
 	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.09.17.1">
+	<!ENTITY plgVersion		"2016.11.29.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sabnzbd.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.6.tar.gz">
-	<!ENTITY controlMD5		"4c9ecf227317f0096b5bf91f1bbd9985">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.7.tar.gz">
+	<!ENTITY controlMD5		"5f02504db5566daac19ddb58f3c4d5d0">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.8_x86.tar.gz">
 	<!ENTITY dependencyMD5	"918b9d1981c4024e95427fccdaac0201">
@@ -44,6 +44,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.11.29.1
+------------
+- Updated grep statement to get latest version and Beta/RC versions
 
 2016.09.17.1
 ------------
