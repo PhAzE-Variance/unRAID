@@ -6,7 +6,7 @@
 	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.11.29.1">
+	<!ENTITY plgVersion		"2016.11.30.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Embyserver.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.10.tar.gz">
 	<!ENTITY controlMD5		"5208adf9c6fd093ece641befbaea81f6">
@@ -18,11 +18,11 @@
 	<!ENTITY dependencyMD564	"41efcbd20fe58cfcaeb06e5d98269d16">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
 	<!ENTITY appURL			"https://github.com/MediaBrowser/Emby/releases">
-	<!ENTITY monoFILE		"Mono-PhAzE-4.2.3.4_x86.txz">
-	<!ENTITY monoMD5		"52c77825451e46bcf272a8536efa878c">
+	<!ENTITY monoFILE		"Mono-PhAzE-4.6.2.7_x86.txz">
+	<!ENTITY monoMD5		"a45a948b67bfad84757a9ff1b377f00b">
 	<!ENTITY monoURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&monoFILE;">
-	<!ENTITY monoFILE64		"Mono-PhAzE-4.2.3.4_x64.txz">
-	<!ENTITY monoMD564		"fec9a7df9a23089c0c6fa2e36b71fad9">
+	<!ENTITY monoFILE64		"Mono-PhAzE-4.6.2.7_x64.txz">
+	<!ENTITY monoMD564		"52642b90666dcae07027ab133b9e245e">
 	<!ENTITY monoURL64		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&monoFILE64;">
 ]>
 
@@ -50,6 +50,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.11.30.1
+------------
+- Updated Mono to 4.6.2.7
 
 2016.11.29.1
 ------------
