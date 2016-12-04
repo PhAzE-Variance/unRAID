@@ -6,10 +6,10 @@
 	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.09.17.1">
+	<!ENTITY plgVersion		"2016.12.03.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Filebot.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
-	<!ENTITY controlMD5		"a301eedd1116124fa0148d89544a7e38">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
+	<!ENTITY controlMD5		"1729855b817715bc18edb7c68e9c5fc0">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"1f79fb99d3cb76d7326aba867654f85c">
@@ -44,6 +44,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2016.12.03.1
+------------
+- Updated install script for changes from zip to tar.xz files hosted on SourceForge
 
 2016.09.17.1
 ------------
