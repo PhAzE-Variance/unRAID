@@ -6,10 +6,10 @@
 	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2016.11.30.1">
+	<!ENTITY plgVersion		"2017.02.15.1">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Sonarr.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
-	<!ENTITY controlMD5		"fa6b36d493bea3d13a514332f9896165">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.5.tar.gz">
+	<!ENTITY controlMD5		"ae1e8e5abb7abd0d54800ff758652fb3">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.2_x86.tar.gz">
 	<!ENTITY dependencyMD5	"ea09a500137e15c20ffd637cbac17af3">
@@ -50,6 +50,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2017.02.15.1
+------------
+- Found new way to grep the current installed version since stdout redirection doesn't appear to capture the proper values
 
 2016.11.30.1
 ------------
