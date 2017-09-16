@@ -6,10 +6,10 @@
 	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2017.09.15.3">
+	<!ENTITY plgVersion		"2017.09.15.4">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Godaddy_ddns.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
-	<!ENTITY controlMD5		"16a8829ddb62db5bba2ee5c045d81dab">
+	<!ENTITY controlMD5		"a8f295ff6a21dc670606a8aadcc6e421">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"97a371d7cd18bcf828eced4790655d23">
@@ -48,7 +48,7 @@ Version History
 ========================
 ####By: PhAzE
 
-2017.09.15.3
+2017.09.15.4
 ------------
 - Script is now symlinked instead of copied from source
 
