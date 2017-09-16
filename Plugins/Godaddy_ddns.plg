@@ -6,10 +6,10 @@
 	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2017.09.15.1">
+	<!ENTITY plgVersion		"2017.09.15.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Godaddy_ddns.plg">
 	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.2.tar.gz">
-	<!ENTITY controlMD5		"73dfe2b973f1b1d553b1cce0776199a0">
+	<!ENTITY controlMD5		"6df7e6d332427c6213ac8974caf7ea7b">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.0_x86.tar.gz">
 	<!ENTITY dependencyMD5	"97a371d7cd18bcf828eced4790655d23">
@@ -48,7 +48,7 @@ Version History
 ========================
 ####By: PhAzE
 
-2017.09.15.1
+2017.09.15.2
 ------------
 - Added ability to upgrade pif and godaddypy dependencies
 
