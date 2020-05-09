@@ -6,10 +6,10 @@
 	<!ENTITY launch			"Settings/&name;">
 	<!ENTITY author			"PhAzE">
 	<!ENTITY authorName		"Troy Wagner">
-	<!ENTITY plgVersion		"2020.05.10.1">
+	<!ENTITY plgVersion		"2020.05.10.2">
 	<!ENTITY pluginURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/Plugins/Godaddy_ddns.plg">
-	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.3.tar.gz">
-	<!ENTITY controlMD5		"a8f295ff6a21dc670606a8aadcc6e421">
+	<!ENTITY controlFILE		"&name;-PhAzE-Control-2.4.tar.gz">
+	<!ENTITY controlMD5		"28ee6f33734418b598fb47a6c6be1783">
 	<!ENTITY controlURL		"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&controlFILE;">
 	<!ENTITY dependencyFILE	"&name;-PhAzE-Dependency-1.1_x86.tar.gz">
 	<!ENTITY dependencyMD5	"7803565a65d3042b2467c8c3f1fe5bbc">
@@ -17,8 +17,8 @@
 	<!ENTITY dependencyFILE64	"&name;-PhAzE-Dependency-1.1_x64.tar.gz">
 	<!ENTITY dependencyMD564	"aefff0306ccb4ed422a055a9ec7aa294">
 	<!ENTITY dependencyURL64	"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&dependencyFILE64;">
-	<!ENTITY pipFILE		"&name;-PhAzE-pip-1.1.tar.gz">
-	<!ENTITY pipMD5			"8e2a7e7a4cf129f7057af2d0c3f3ce5d">
+	<!ENTITY pipFILE		"&name;-PhAzE-pip-1.2.tar.gz">
+	<!ENTITY pipMD5			"b9a8bab9c754c3d10908bc73d894c459">
 	<!ENTITY pipURL			"https://github.com/PhAzE-Variance/unRAID/raw/master/AppSupport/&name;/&pipFILE;">
 	<!ENTITY appURL			"">
 ]>
@@ -47,6 +47,10 @@ Version History
 &displayName; Change Log
 ========================
 ####By: PhAzE
+
+2020.05.10.2
+------------
+- Added ENUM34 pip package
 
 2020.05.10.1
 ------------
